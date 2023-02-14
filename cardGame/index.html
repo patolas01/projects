@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const cards = document.querySelectorAll(".card");
+        let flippedCards = [];
+
+        for (let card of cards) {
+            card.addEventListener("click", function () {
+                if (flippedCards.length < 2) {
+                    flippedCards.push(this);
+                    this.style.backgroundColor = "white";
+                }
+                if (flippedCards.length === 2) {
+                    if (flippedCards[0].getAttribute("data-card") === flippedCards[1].getAttribute("data-card")) {
+                        flippedCards[0].style.backgroundColor = "green";
+                        flippedCards[1].style.backgroundColor = "green";
+                        flippedCards = [];
+                    } else {
+                        setTimeout(() => {
+                            flippedCards[0].style.backgroundColor = "#ccc";
+                            flippedCards[1].style.backgroundColor = "#ccc";
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+    </script>
+    <style>
+        #game {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <div class="card" data-card="1"></div>
+        <div class="card" data-card="2"></div>
+        <div class="card" data-card="3"></div>
+        <div class="card" data-card="1"></div>
+        <div class="card" data-card="2"></div>
+        <div class="card" data-card="3"></div>
+    </div>
+</body>
+
+</html>

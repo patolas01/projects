@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TheAnxietyRoom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #112;
+            color: #888888;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin-top: 1%;
+            letter-spacing: small;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            height: calc(100vh - 40px);
+            box-sizing: border-box;
+            border-top: 0;
+            border-bottom: 0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .middle-box {
+            width: 50%;
+            border: 1px solid #313131;
+            border-top: 0;
+            border-bottom: 0;
+            overflow-x: auto;
+            overflow-y: scroll;
+        }
+
+        .left-box {
+            float: left;
+            width: 25%;
+        }
+
+        .right-box {
+            float: right;
+            width: 25%;
+        }
+
+        article {
+            transition-duration: 224ms;
+            background-color: rgb(32, 32, 63);
+            margin-top: 40px;
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: justify;
+            border: 1px solid #888888;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 10px;
+            padding-bottom: 10px;
+            max-height: 200px;
+        }
+
+        article:hover {
+            transform: scale(110%);
+        }
+
+        article h4 {
+            border-bottom: 1px solid #888888;
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            font-size: small;
+        }
+
+
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+            margin-right: 12px;
+            scroll-margin-right: 5px;
+        }
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box left-box">
+            Buttons for publish, make friends or vote on a pole.
+        </div>
+
+        <div class="box middle-box">
+            <h1>Welcome to The Anxiety Room!</h1>
+            <h3>You can do whatever you want, nobody's gonna judge you</h3>
+            <br>
+            <article class="postArticle">
+                <h4>Title of the post</h4>
+                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
+                    fullfill the
+                    textbox.</p>
+            </article>
+            <article class="postArticle">
+                <h4>Title of the post</h4>
+                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
+                    fullfill the
+                    textbox.</p>
+            </article>
+            <article class="postArticle">
+                <h4>Title of the post</h4>
+                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
+                    fullfill the textbox.</p>
+            </article>
+        </div>
+
+
+        <div class="box right-box">
+            Profile, settings and preferences. Maybe friends list or search profiles.
+        </div>
+    </div>
+</body>
+
+</html>

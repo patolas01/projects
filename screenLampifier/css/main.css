@@ -1,0 +1,75 @@
+body{
+    background-color: #112;
+}
+
+div.buttons{
+    width: 90vw;
+    margin-top: 80vh;
+    margin-bottom: 0;
+    padding: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #112;
+}
+
+div#button{
+    transition-duration: 400ms;
+    user-select: none;
+    border: solid 1px black;
+    background-color: darkgrey;
+    min-width: 20px;
+    min-height: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+}
+
+div#button img{
+    user-select: none;
+    width: 35px;
+    height: 35px;
+    padding-left: 10px;
+    padding-top: 7px;
+    text-align: center;
+    line-height: 50px;
+}
+
+div#button:hover{
+    filter: brightness(120%);
+    transform: scale(110%);
+}
+
+
+.slider {
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff00cc, #333399);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-effect {
+            user-select: none;
+            /*transition-delay: 1s;*/
+            /*animation: typing 4s steps(10, end) infinite 8s;*/
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 auto;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        #heart{
+            transition-duration: 800ms ;
+        }
+
+        #heart:hover{
+            transform: scale(180%);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="typing-effect" id="1">I</div><br>
+        <div class="typing-effect" id="2">LOVE</div><br>
+        <div class="typing-effect" id="3">YOU</div><br>
+        <div class="typing-effect" id="heart" onclick="promptUser()">❤️</div><br>
+        <div class="typing-effect" id="name"></div><br>
+    </div>
+</body>
+<script>
+    const texts = ['I', 'LOVE', 'YOU', '❤️'];
+        const durations = [4000, 4000, 4000, 4000];
+        const delays = [0, 2000, 2000, 2000];
+        const cursorChar = '|';
+
+        function typeEffect(element, text, duration, delay) {
+            let i = 0;
+            setTimeout(function () {
+                let timer = setInterval(function () {
+                    element.innerHTML = text.substring(0, i) + cursorChar;
+                    i++;
+                    if (i > text.length) {
+                        clearInterval(timer);
+                        setTimeout(function () {
+                            element.innerHTML = text;
+                        }, 300);
+                    }
+                }, duration / text.length);
+            }, delay);
+        }
+
+        for (let i = 0; i < texts.length; i++) {
+            const element = document.getElementById(i + 1);
+            element.innerHTML = "";
+            typeEffect(element, texts[i], durations[i], delays[i]);
+        }
+
+        const nameElement = document.getElementById("name");
+        nameElement.innerHTML = "";
+
+        function promptUser() {
+            const name = prompt("Enter your loved one name:", "");
+            if (name != null) {
+                typeEffect(nameElement, name, 1000, 0);
+            }
+        }
+</script>
+
+</html>
