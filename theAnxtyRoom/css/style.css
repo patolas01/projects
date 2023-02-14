@@ -1,0 +1,120 @@
+        body {
+            background-color: #112;
+            color: #888888;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin-top: 1%;
+            letter-spacing: small;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
+
+        .box {
+            height: calc(100vh - 40px);
+            box-sizing: border-box;
+            border-top: 0;
+            border-bottom: 0;
+            padding: 15px;
+            text-align: center;
+
+        }
+
+
+
+        .middle-box {
+            width: 50%;
+            border: 1px solid #313131;
+            border-top: 0;
+            border-bottom: 0;
+            overflow-x: auto;
+            overflow-y: scroll;
+            scroll-margin-right: 5px;
+        }
+
+        .left-box {
+            padding-right: 45px;
+            padding-left: 40px;
+            float: left;
+            width: 25%;
+            display: grid;
+            place-items: center;
+        }
+
+        .right-box {
+            float: right;
+            width: 25%;
+            display: grid;
+            place-items: center;
+        }
+
+
+        .buttonMain {
+            min-width: 50px;
+            border: 1px #3a5e32 solid;
+            background-color: #253b1e;
+            padding: 10px;
+            border-radius: 10px;
+            user-select: none;
+        }
+
+        .buttonMain:hover {
+            filter: brightness(135%);
+            transform: scale(105%);
+        }
+
+
+        article {
+            transition-duration: 224ms;
+            background-color: rgb(32, 32, 63);
+            margin-top: 40px;
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: justify;
+            border: 1px solid #888888;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 10px;
+            padding-bottom: 10px;
+            max-height: 200px;
+        }
+
+        article:hover {
+            transform: scale(110%);
+        }
+
+        article h4 {
+            border-bottom: 1px solid #888888;
+            padding-bottom: 20px;
+        }
+
+        h3 {
+            font-size: small;
+        }
+
+
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
