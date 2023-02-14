@@ -7,38 +7,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
 </head>
 
-<body>
+<body onload="postsGen();">
     <div class="container">
         <div class="box left-box">
             <p>Buttons for publish, make friends or vote on a pole.</p>
-            <div class="buttonMain">Create a post</div>
+            <a href="newPost.html">
+                <div class="buttonMain" id="addPost">Create a post</div>
+            </a>
         </div>
 
         <div class="box middle-box">
             <h1>Welcome to The Anxiety Room!</h1>
             <h3>You can do whatever you want, nobody's gonna judge you</h3>
             <br>
-            <article class="postArticle">
-                <h4>Title of the post</h4>
-                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
-                    fullfill the
-                    textbox.</p>
-            </article>
-            <article class="postArticle">
-                <h4>Title of the post</h4>
-                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
-                    fullfill the
-                    textbox.</p>
-            </article>
-            <article class="postArticle">
-                <h4>Title of the post</h4>
-                <p>Text for testing, this is a mix of letters that form a word and by writing this im fully commited to
-                    fullfill the textbox.</p>
-            </article>
-        </div>
 
+            <article class="postArticle" id="112">
+                <div class="userInfo"><img class="post UserPic"
+                        src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png"
+                        alt="User Profile Picture">
+                    <p>@usertag</p>
+                    <div class="react"><div class="reactLike" onclick="likePost('112');"><img src="img/likeWhite.png" alt="Like Button"></div></div>
+                </div>
+                <h4>Title of the post</h4>
+                <p>Description of the post. This is required. user could add image (it will appear in a symbol or icon
+                    telling that
+                    the user added an image)</p>
+            </article>
+
+        </div>
 
         <div class="box right-box">
             Profile, settings and preferences. Maybe friends list or search profiles.

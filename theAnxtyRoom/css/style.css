@@ -23,6 +23,11 @@
 
         }
 
+        a {
+            text-decoration: none;
+            color: #888888;
+        }
+
 
 
         .middle-box {
@@ -70,7 +75,7 @@
         article {
             transition-duration: 224ms;
             background-color: rgb(32, 32, 63);
-            margin-top: 40px;
+            margin-top: 35px;
             margin-left: 10%;
             margin-right: 10%;
             text-align: justify;
@@ -83,16 +88,38 @@
         }
 
         article:hover {
-            transform: scale(110%);
+            transform: scale(101%);
         }
 
         article h4 {
-            border-bottom: 1px solid #888888;
-            padding-bottom: 20px;
+            /*border-bottom: 1px solid #888888;*/
+            padding-bottom: 5px;
         }
 
         h3 {
             font-size: small;
+        }
+
+        div.react{
+            float: right;
+            width: 100%;
+        }
+
+        div.react div{
+            float: right;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        div.react img {
+            transition-duration: 120ms;
+            width: 20px;
+            height: 20px;
+        }
+
+        div.reactLike img:hover{
+            /*filter: brightness(0.4) sepia(1) saturate(10000%);*/
+            content: url(../img/likeRed.png);
         }
 
 
@@ -117,4 +144,27 @@
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
+        }
+
+        div.userInfo {
+            width: 100%;
+            display: inline-flex;
+            margin-top: 5px;
+            align-items: center;
+            margin-bottom: 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #888;
+        }
+
+        img.post.UserPic {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline;
+            margin-right: 15px;
+        }
+
+        .userInfo p {
+            font-weight: bold;
+            filter: brightness(150%);
         }
