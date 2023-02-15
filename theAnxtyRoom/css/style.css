@@ -12,7 +12,25 @@
         }
 
 
+        div.topTitle{
+            margin-top: 20%;
+            margin-left: 5%;
+            
+        }
 
+        #introSubtitle{
+            margin-left: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 90%;
+        }
+
+        #introTitle{
+            margin-bottom: 0;
+            font-size: 450%;
+        }
+        
+        
+        
         .box {
             height: calc(100vh - 40px);
             box-sizing: border-box;
@@ -100,12 +118,13 @@
             font-size: small;
         }
 
-        div.react{
+        div.react {
             float: right;
             width: 100%;
+            user-select: none;
         }
 
-        div.react div{
+        div.react div {
             float: right;
             display: inline-flex;
             align-items: center;
@@ -117,7 +136,7 @@
             height: 20px;
         }
 
-        div.reactLike img:hover{
+        div.reactLike img:hover {
             /*filter: brightness(0.4) sepia(1) saturate(10000%);*/
             content: url(../img/likeRed.png);
         }
