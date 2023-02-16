@@ -1,5 +1,5 @@
 var r = 255, g = 0, b = 0;
-var time = 15;
+var time = 60;
 
 setInterval(function () {
     if (r > 0 && b == 0) {
@@ -14,15 +14,9 @@ setInterval(function () {
         r++;
         b--;
     }
-    document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+    document.querySelector(".screen").style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
 }, time);
 
-
-
-function fadeFX(time) {
-    
-}
-
 function bright() {
-    document.body.style.backdropFilter = "brightness("+document.getElementById("brightnessSlider").value+"%)";
+    document.querySelector(".screen").style.filter = "brightness("+document.getElementById("brightnessSlider").value+"%)";
 }

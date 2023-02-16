@@ -11,26 +11,88 @@
             flex-wrap: wrap;
         }
 
-
-        div.topTitle{
-            margin-top: 20%;
-            margin-left: 5%;
-            
+        div.mainIntro {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
         }
 
-        #introSubtitle{
+        div.topTitle {
+            float: left;
+            margin-left: 5%;
+            margin-top: 15%;
+            width: 55%;
+            height: 100%;
+        }
+
+        div.regBox {
+            margin-top: -10%;
+            display: grid;
+            place-items: center;
+            float: right;
+            width: 45%;
+            height: 100%;
+        }
+
+        form {
+            border-radius: 10px;
+            background-color: #2e2e2e;
+            width: 250px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 20px;
+            height: 300px;
+        }
+
+        form a{
+            font-size: 80%;
+            text-decoration: underline;
+        }
+
+        a{
+            transition-duration: 250ms;
+        }
+
+        
+        a:hover{
+            font-weight: bolder;
+        }
+
+        form input {
+            transition-duration: 500ms;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 0;
+            border-radius: 10px;
+            height: 20px;
+            background-color: #888;
+            font-size: 100%;
+        }
+
+        input:focus {
+            outline: 0;
+            border-radius: 0;
+        }
+
+        input::placeholder {
+            color: #494949;
+        }
+
+        #introSubtitle {
             margin-left: 15px;
             font-family: 'Courier New', Courier, monospace;
             font-size: 90%;
         }
 
-        #introTitle{
+        #introTitle {
             margin-bottom: 0;
             font-size: 450%;
         }
-        
-        
-        
+
+
+
         .box {
             height: calc(100vh - 40px);
             box-sizing: border-box;
@@ -76,6 +138,7 @@
 
 
         .buttonMain {
+            transition-duration: 200ms;
             min-width: 50px;
             border: 1px #3a5e32 solid;
             background-color: #253b1e;
@@ -85,10 +148,19 @@
         }
 
         .buttonMain:hover {
+            cursor: pointer;
             filter: brightness(135%);
             transform: scale(105%);
         }
 
+
+        #submitIntro {
+            text-align: center;
+            width: 90%;
+            height: 20px;
+            line-height: 20px;
+            font-weight: 600;
+        }
 
         article {
             transition-duration: 224ms;

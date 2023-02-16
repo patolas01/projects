@@ -2,6 +2,10 @@ body{
     background-color: #112;
 }
 
+div.screen{
+    background-color: black;
+}
+
 div.buttons{
     width: 90vw;
     margin-top: 80vh;
