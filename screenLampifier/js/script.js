@@ -1,5 +1,5 @@
 var r = 255, g = 0, b = 0;
-var time = 60;
+var time = 50;
 
 setInterval(function () {
     if (r > 0 && b == 0) {
@@ -20,3 +20,4 @@ setInterval(function () {
 function bright() {
     document.querySelector(".screen").style.filter = "brightness("+document.getElementById("brightnessSlider").value+"%)";
 }
+
