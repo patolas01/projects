@@ -6,7 +6,11 @@ function postsGen() {
     }
 }
 
+//work-in-progress feature
+
+//post like func
 function likePost(id){
+    var postID = document.getElementById("'"+id+"'");
     if (document.querySelector(".reactLike img").src == "img/likeRed.png") {
         document.querySelector(".reactLike img").src = "img/likeWhite.png";   
     }

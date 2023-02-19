@@ -1,7 +1,7 @@
         body {
             background-color: #112;
             color: #888888;
-            font-family: 'Source Sans Pro', sans-serif!important;
+            font-family: 'Source Sans Pro', sans-serif !important;
             letter-spacing: small;
             margin: 0;
         }
@@ -213,21 +213,39 @@
             align-items: center;
         }
 
-        div.react img {
+        div.reactLike img {
             transition-duration: 120ms;
             width: 20px;
             height: 20px;
+            
+        }
+
+        .react img{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .react img:hover {
+            cursor: pointer;
+        }
+
+        .reactSave img{
+            width: auto;
+            height: auto;
+            max-width: 20px;
+            max-height: 20px;
         }
 
         div.reactLike img:hover {
             /*filter: brightness(0.4) sepia(1) saturate(10000%);*/
             content: url(../img/likeRed.png);
+
         }
 
 
 
         /* width */
-        ::-webkit-scrollbar{
+        ::-webkit-scrollbar {
             width: 10px;
         }
 
@@ -309,27 +327,24 @@
             border-radius: 0;
         }
 
-        textarea::-webkit-scrollbar-thumb{
+        textarea::-webkit-scrollbar-thumb {
             background-color: #555;
         }
 
 
 
         /*RESPONSIVE*/
-        @media only screen and (width<700px){
-            .middle-box{
+        @media only screen and (width<700px) {
+            .middle-box {
                 width: 100vw;
             }
 
-            .left-box{
+            .left-box {
                 display: none;
             }
 
-            .right-box{
+            .right-box {
                 display: none;
             }
 
         }
-
-
-        
