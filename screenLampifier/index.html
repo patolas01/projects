@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/script.js"></script>
+    <link rel="shortcut icon" href="lampyLogo.png" type="image/x-icon">
     <title>ScreenLampy</title>
 </head>
 
 <body>
-    <div class="screen">
-        <div class="buttons">
-            <div id="button"><img src="https://img.icons8.com/sf-black-filled/64/000000/play.png" alt="play"></div>
-            <div id="button"><img src="https://img.icons8.com/sf-black-filled/64/000000/play.png" alt="timer"></div>
-            <div id="button"><img src="https://img.icons8.com/sf-black-filled/64/000000/play.png" alt="effect"></div>
-            <div id="button"><img src="https://img.icons8.com/sf-black-filled/64/000000/play.png" alt="reset"></div>
-            <input id="brightnessSlider" type="range" min="10" max="150" value="100" onchange="bright();">
-            <input id="speedSlider" type="range" min="10" max="200" value="50" onchange="speed();">
-        </div>
+    <span id="bright">
+        <img src="https://icons.veryicon.com/png/o/miscellaneous/official-icon-of-flying-pig/brightness-18.png"
+            alt="brightness symbol">
+        <p id="bright-value">100</p>
+    </span>
+    <div class="interactMenu">
+        <label for="speed">Effect Speed</label>
+        <input class="bar" id="speed" type="range" min="5" max="100" value="20" onchange="speedC();">
+        <label for="brightness">Brightness</label>
+        <input class="bar" id="brightness" type="range" min="5" max="150" step="5" value="100" onchange="bright();">
     </div>
 
 </body>
