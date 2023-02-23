@@ -9,12 +9,34 @@ function postsGen() {
 //work-in-progress feature
 
 //post like func
-function likePost(id){
-    var postID = document.getElementById("'"+id+"'");
+function likePost(id) {
+    var postID = document.getElementById("'" + id + "'");
     if (document.querySelector(".reactLike img").src == "img/likeRed.png") {
-        document.querySelector(".reactLike img").src = "img/likeWhite.png";   
+        document.querySelector(".reactLike img").src = "img/likeWhite.png";
     }
-    else{
+    else {
         document.querySelector(".reactLike img").src = "img/likeRed.png";
     }
+}
+
+function topShow() {
+    if (document.querySelector("div .middle-box").scrollTop > 350) {
+        document.querySelector("div.backTop").style.transitionDuration = "600ms";
+        document.querySelector("div.backTop").style.opacity = "1";
+    }
+    if (document.querySelector("div .middle-box").scrollTop < 350) {
+        document.querySelector("div.backTop").style.transitionDuration = "20ms";
+        document.querySelector("div.backTop").style.opacity = "0";
+    }
+
+}
+
+function goTop() {
+    var position =
+        document.querySelector("div .middle-box").scrollTop;
+    if (position) {
+        window.scrollBy(0, -Math.max(1, Math.floor(position / 10)));
+        scrollAnimation = setTimeout("goTop()", 30);
+    } else clearTimeout(scrollAnimation);
+
 }

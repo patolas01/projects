@@ -3,6 +3,9 @@
 
 <head>
     <title>TheAnxtyRoom</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -20,22 +23,44 @@
             </a>
         </div>
 
-        <div class="box middle-box">
-            <img src="img/anxtyLogo.png" alt="logo" style="width:100px; padding: 30px">
-            <h1>Welcome to The Anxty Room!</h1>
-            <h3>You can do whatever you want, nobody's gonna judge you</h3>
+        <header>
+            <div id="addPost-r">
+                <img src="img/add.png" alt="addPost">
+            </div>
+            <div id="searchBar-r">
+                <input type="search" name="searchBar" id="searchBar" placeholder="search...">
+            </div>
+            <div id="profile-r">
+                <img class="post profilePic"
+                    src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png"
+                    alt="Profile Picture">
+            </div>
+        </header>
+
+        <div class="backTop">
+            <img src="img/topArrow.png" alt="topArrow" onclick="goTop();">
+        </div>
+
+        <div class="box middle-box" onscroll="topShow();">
+            <div id="title">
+                <img id="logo" src="img/anxtyLogo.png" alt="logo" style="width:100px; padding: 30px">
+                <h1>Welcome to The Anxty Room!</h1>
+                <h3>You can do whatever you want, nobody's gonna judge you</h3>
+            </div>
+
             <br>
 
             <!--Post Template-->
             <article class="postArticle" id="112">
-                <div class="userInfo"><img class="post UserPic"
+                <div class="userInfo">
+                    <img class="post UserPic"
                         src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png"
                         alt="User Profile Picture">
                     <p>@usertag</p>
                     <div class="react">
                         <div class="reactSave"><img src="img/saveWhite.png" alt="Save Post"></div>
-                        <div class="reactLike" ><img src="img/likeWhite.png" alt="Like Post"></div>
-                        
+                        <div class="reactLike"><img src="img/likeWhite.png" alt="Like Post"></div>
+
                     </div>
                 </div>
                 <h4>Title of the post</h4>
@@ -43,7 +68,6 @@
                     telling that
                     the user added an image)</p>
             </article>
-
         </div>
 
         <div class="box right-box">
