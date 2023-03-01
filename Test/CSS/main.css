@@ -1,6 +1,18 @@
 body{
-    background-color: darkslategrey;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 20pt;
-    text-align: center;
+    display: grid;
+    justify-items: center;
+}
+
+table{
+    border: 1px solid black;
+}
+
+table tr{
+    height: 60px;
+    border: 1px solid black;
+}
+
+table td{
+    border: 1px solid black;
+    width: 60px;
 }
