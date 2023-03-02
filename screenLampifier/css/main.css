@@ -19,7 +19,7 @@ body {
     mix-blend-mode: difference;
     /*testBorder
     border: 1px dashed black;*/
-    margin-top: 20%;
+    margin-top: 20svh;
 }
 
 #bright img {
@@ -39,7 +39,7 @@ body {
 .interactMenu{
     transition-duration: 1200ms;
     /*testBorderborder: 1px dashed black;*/
-    margin-top: 12%;
+    margin-top: 5svh;
     margin-bottom: 0;
     display: grid;
     place-content: center;
