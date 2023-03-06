@@ -179,7 +179,8 @@
         article {
             transition-duration: 224ms;
             background-color: rgb(32, 32, 63);
-            margin-top: 35px;
+            margin-top: 25px;
+            margin-bottom: 20px;
             margin-left: 10%;
             margin-right: 10%;
             text-align: justify;
@@ -344,6 +345,10 @@
             display: none;
         }
 
+        div.respBottom{
+            display: none;
+        }
+
 
 
 
@@ -463,6 +468,44 @@
                 border-radius: 50%;
                 
             }
+
+
+            div.respBottom{
+                width: 90svw;
+                height: 7svh;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            #respB-icon{
+                width: 25px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            #respB-icon img{
+                width: 25px;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             ::-webkit-scrollbar {
                 display: none;
