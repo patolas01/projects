@@ -21,22 +21,14 @@ function likePost(id) {
 
 function topShow() {
     if (document.querySelector("div .middle-box").scrollTop > 350) {
-        document.querySelector("div.backTop").style.transitionDuration = "600ms";
         document.querySelector("div.backTop").style.opacity = "1";
     }
     if (document.querySelector("div .middle-box").scrollTop < 350) {
-        document.querySelector("div.backTop").style.transitionDuration = "20ms";
         document.querySelector("div.backTop").style.opacity = "0";
     }
 
 }
 
-function goTop() {
-    var position =
-        document.querySelector("div .middle-box").scrollTop;
-    if (position) {
-        window.scrollBy(0, -Math.max(1, Math.floor(position / 10)));
-        scrollAnimation = setTimeout("goTop()", 30);
-    } else clearTimeout(scrollAnimation);
-
+function goTop(){
+    document.querySelector("body").animate({scrollTop: 0}, "slow");
 }

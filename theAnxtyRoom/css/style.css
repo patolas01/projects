@@ -122,6 +122,8 @@
 
 
         .middle-box {
+            animation-duration: auto;
+            transition-duration: auto;
             width: 50%;
             border: 1px solid #313131;
             border-top: 0;
@@ -356,9 +358,11 @@
         @media only screen and (max-width: 751px) {
             body {
                 touch-action: manipulation;
+                animation-duration: auto;
             }
 
             .middle-box {
+                animation-duration: auto;
                 touch-action: manipulation;
                 margin: 0;
                 padding: 0;
@@ -439,21 +443,25 @@
             }
 
             div.backTop {
+                animation-duration: auto;
+                background: linear-gradient(180deg, rgb(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
                 display: flex;
-                transition-duration: 600ms;
+                transition-duration: auto;
                 opacity: 0;
                 justify-content: center;
                 align-items: center;
-                top: 100px;
+                top: 11%;
+                padding-top: 15px;
                 position: absolute;
                 /*border: 1px solid red;*/
-                height: 50px;
+                height: 100px;
                 width: 100svw;
             }
 
             div.backTop img {
                 background-color: #b8b8b8;
                 border-radius: 50%;
+                
             }
 
             ::-webkit-scrollbar {
