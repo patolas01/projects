@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/main.css">
-    <style>
+    <style>     
+
         table {
             background-image: url("o0Z5hVo-_400x400.jpg");
         }
@@ -21,32 +22,26 @@
             padding: 0;
         }
 
-        .box {
-            width: 300px;
-            height: 100px;
-            background-color: rgb(255, 255, 255);
-            position: absolute;
-            font-size: 300%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .colorPicker {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            position: fixed;
+            margin-left: 60%;
+            float: right;
+            border-left: 1px solid black;
+            height: 100svh;
         }
 
-        .box:hover {
-            position: absolute;
-            top: calc(100% * var(--y));
-            left: calc(100% * var(--x));
-            --x: calc(random());
-            --y: calc(random());
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease-in-out;
+        input{
+            margin-left: 25%;
+            width: 150px;
         }
     </style>
 </head>
 
 <body>
     <h1>Cenas</h1>
-    <div class="box">Quero ir pra casa fds</div>
     <div>
         <table>
             <tr>
@@ -101,9 +96,14 @@
 
     </div>
 
+    <div class="colorPicker">
+        <input type="color" name="" id="color">
+    </div>
+
     <script>
         function colorC(id) {
-            document.getElementById(id).style.opacity = 0/*"#" + Math.floor(Math.random() * 16777215).toString(16)*/;
+            document.getElementById(id).style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            document.getElementById(id).style.backgroundColor = document.getElementById("color").value;
         }
     </script>
 </body>
