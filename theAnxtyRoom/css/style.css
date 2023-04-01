@@ -88,7 +88,11 @@
         }
 
         input::placeholder {
-            color: #494949;
+            color: #1b1b1b;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: smaller;
+            text-align: left;
+
         }
 
         #introSubtitle {
@@ -345,7 +349,11 @@
             display: none;
         }
 
-        div.respBottom{
+        div.respBottom {
+            display: none;
+        }
+
+        #logoIntro {
             display: none;
         }
 
@@ -357,10 +365,51 @@
 
 
 
-
-
         /*RESPONSIVE*/
         @media only screen and (max-width: 751px) {
+            #mainIntro {
+                width: 100svw;
+                display: block;
+                margin: 0;
+            }
+
+            #logoIntro {
+                display: inline;
+            }
+
+            .topTitle {
+                padding: 0;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                /* border: red 1px solid;*/
+                /*margin-left: 5%;*/
+                /*margin-top: 15%;*/
+                width: 100%;
+
+                height: auto;
+            }
+
+            #introTitle {
+                margin-top: 15px;
+                /*padding-top: 30%;*/
+            }
+
+            .regBox {
+                margin-top: 15svh;
+                /*border: red 1px solid;*/
+                display: grid;
+                place-items: center;
+                width: 100%;
+                height: auto;
+            }
+
+            #loginForm {
+                transform: scale(150%);
+            }
+
+
+
             body {
                 touch-action: manipulation;
                 animation-duration: auto;
@@ -466,11 +515,11 @@
             div.backTop img {
                 background-color: #b8b8b8;
                 border-radius: 50%;
-                
+
             }
 
 
-            div.respBottom{
+            div.respBottom {
                 width: 90svw;
                 height: 7svh;
                 display: inline-flex;
@@ -479,13 +528,13 @@
                 text-align: center;
             }
 
-            #respB-icon{
+            #respB-icon {
                 width: 25px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
 
-            #respB-icon img{
+            #respB-icon img {
                 width: 25px;
             }
 
@@ -532,6 +581,10 @@
 
             input[type=search]:focus {
                 background-image: none;
+            }
+
+            input[type=search]::placeholder{
+                padding-left: 15%;
             }
 
 
