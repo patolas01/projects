@@ -3,6 +3,9 @@
 
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+    </style>
+    <style>
         body {
             background: linear-gradient(to right, #ff00cc, #333399);
             height: 100vh;
@@ -22,14 +25,14 @@
             text-align: center;
             margin: 0 auto;
             cursor: pointer;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Caveat', cursive;
         }
 
-        #heart{
-            transition-duration: 800ms ;
+        #heart {
+            transition-duration: 800ms;
         }
 
-        #heart:hover{
+        #heart:hover {
             transform: scale(180%);
         }
     </style>
@@ -45,42 +48,42 @@
     </div>
 </body>
 <script>
-    const texts = ['I', 'LOVE', 'YOU', '❤️'];
-        const durations = [4000, 4000, 4000, 4000];
-        const delays = [0, 2000, 2000, 2000];
-        const cursorChar = '|';
+    var name = "";
+    const texts = ['I', 'LOVE', 'YOU', '❤️', name];
+    const durations = [4000, 4000, 4000, 4000];
+    const delays = [0, 2000, 2000, 2000];
+    const cursorChar = '|';
 
-        function typeEffect(element, text, duration, delay) {
-            let i = 0;
-            setTimeout(function () {
-                let timer = setInterval(function () {
-                    element.innerHTML = text.substring(0, i) + cursorChar;
-                    i++;
-                    if (i > text.length) {
-                        clearInterval(timer);
-                        setTimeout(function () {
-                            element.innerHTML = text;
-                        }, 300);
-                    }
-                }, duration / text.length);
-            }, delay);
+    function typeEffect(element, text, duration, delay) {
+        let i = 0;
+        setTimeout(function () {
+            let timer = setInterval(function () {
+                element.innerHTML = text.substring(0, i) + cursorChar;
+                i++;
+                if (i > text.length) {
+                    clearInterval(timer);
+                    setTimeout(function () {
+                        element.innerHTML = text;
+                    }, 300);
+                }
+            }, duration / text.length);
+        }, delay);
+    }
+
+    for (let i = 0; i < texts.length; i++) {
+        const element = document.getElementById(i + 1);
+        element.innerHTML = "";
+        typeEffect(element, texts[i], durations[i], delays[i]);
+    }
+
+    const nameElement = document.getElementById("name");
+
+    function promptUser() {
+        if (name != null) {
+            name = prompt("Enter your loved one name:");
         }
 
-        for (let i = 0; i < texts.length; i++) {
-            const element = document.getElementById(i + 1);
-            element.innerHTML = "";
-            typeEffect(element, texts[i], durations[i], delays[i]);
-        }
-
-        const nameElement = document.getElementById("name");
-        nameElement.innerHTML = "";
-
-        function promptUser() {
-            const name = prompt("Enter your loved one name:", "");
-            if (name != null) {
-                typeEffect(nameElement, name, 1000, 0);
-            }
-        }
+    }
 </script>
 
 </html>
