@@ -3,85 +3,176 @@
 
 <head>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
     </style>
     <style>
         body {
+            transition-duration: 1012ms;
             background: linear-gradient(to right, #ff00cc, #333399);
-            height: 100vh;
+            margin: 0;
+            height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .typing-effect {
-            user-select: none;
-            /*transition-delay: 1s;*/
-            /*animation: typing 4s steps(10, end) infinite 8s;*/
-            white-space: nowrap;
-            overflow: hidden;
-            font-size: 32px;
-            font-weight: bold;
-            text-align: center;
-            margin: 0 auto;
-            cursor: pointer;
-            font-family: 'Caveat', cursive;
+            font-family: 'Alkatra', cursive;
         }
 
         #heart {
+            display: flex;
+            font-size: 210%;
+            text-align: center;
+            margin: 0 auto;
+            cursor: pointer;
+            user-select: none;
             transition-duration: 800ms;
+            font-family: 'Alkatra', cursive;
         }
 
         #heart:hover {
-            transform: scale(180%);
+            transform: scale(130%);
+        }
+
+        div.prompt {
+            transition-duration: 1012ms;
+            position: fixed;
+            color: white;
+            background-color: #2b2b2b;
+            padding: 15px;
+            border-radius: 10px;
+            display: grid;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        textarea {
+            transition-duration: 312ms;
+            border: 0;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 100%;
+            padding: 5px;
+            padding-left: 8px;
+            padding-right: 8px;
+            font-family: 'Alkatra', cursive;
+            resize: none;
+            outline: 0;
+        }
+
+
+        button {
+            height: 80%;
+            font-family: 'Alkatra', cursive;
+            font-size: 80%;
+            margin-top: 20px;
+            padding: 10px;
+            border: 0;
+            border-radius: 5px;
+            color: white;
+            background-color: green;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .message {
+            display: grid;
+            text-align: center;
+        }
+
+        #texto {
+            width: 150px;
+            text-align: center;
+            font-size: 200%;
+            margin-bottom: 2svh;
+        }
+
+        #shareBTN {
+            transition-duration: 112ms;
+            display: grid;
+            user-select: none;
+            border: 4px white solid;
+            width: 30px;
+            height: 30px;
+            padding: 10px;
+            border-radius: 50%;
+            position: fixed;
+            margin-top: 60svh;
+            backdrop-filter: brightness(110%);
+        }
+
+        #shareBTN:hover {
+            transform: scale(102%);
+            box-shadow: 0px 0px 10px black;
+            backdrop-filter: brightness(120%);
+        }
+
+        #shareBTN img {
+            -webkit-user-drag: none;
+            user-select: none;
+            width: 30px;
+        }
+
+        @media only screen and (max-width: 751px) {
+            body {
+                font-size: 200%;
+            }
+
+
+            #shareBTN {
+                transform: scale(180%);
+            }
+
+            #shareBTN:hover {
+                transform: scale(182%);
+            }
         }
     </style>
+    <title>TheAnxtyRoom</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div>
-        <div class="typing-effect" id="1">I</div><br>
-        <div class="typing-effect" id="2">LOVE</div><br>
-        <div class="typing-effect" id="3">YOU</div><br>
-        <div class="typing-effect" id="heart" onclick="promptUser()">❤️</div><br>
-        <div class="typing-effect" id="name"></div><br>
+    <div class="prompt">
+        <label for="msg">Mensagem:</label>
+        <textarea name="msg" id="msg" cols="30" rows="4"></textarea>
+        <button onclick="saveMsg()">Guardar</button>
+    </div>
+    <div class="message">
+        <div id="texto">
+        </div>
+        <div id="heart" onclick="showPrompt()">❤️</div>
+    </div>
+    <div id="shareBTN" onclick="copyLink();">
+        <img src="link-button-svgrepo-com.svg" alt="share message">
     </div>
 </body>
 <script>
-    var name = "";
-    const texts = ['I', 'LOVE', 'YOU', '❤️', name];
-    const durations = [4000, 4000, 4000, 4000];
-    const delays = [0, 2000, 2000, 2000];
-    const cursorChar = '|';
+    var heart = document.querySelector("#heart");
+    var prompte = document.querySelector(".prompt");
+    var baquegraunde = document.body;
 
-    function typeEffect(element, text, duration, delay) {
-        let i = 0;
-        setTimeout(function () {
-            let timer = setInterval(function () {
-                element.innerHTML = text.substring(0, i) + cursorChar;
-                i++;
-                if (i > text.length) {
-                    clearInterval(timer);
-                    setTimeout(function () {
-                        element.innerHTML = text;
-                    }, 300);
-                }
-            }, duration / text.length);
-        }, delay);
+
+    function showPrompt() {
+        heart.style.display = "none";
+        prompte.style.visibility = "visible";
+        prompte.style.opacity = 1;
+        baquegraunde.style.backdropFilter = "brightness(60%)";
     }
 
-    for (let i = 0; i < texts.length; i++) {
-        const element = document.getElementById(i + 1);
-        element.innerHTML = "";
-        typeEffect(element, texts[i], durations[i], delays[i]);
+    function hidePrompt() {
+        heart.style.display = "flex";
+        prompte.style.visibility = "hidden";
+        prompte.style.opacity = 0;
+        baquegraunde.style.backdropFilter = "brightness(100%)";
     }
 
-    const nameElement = document.getElementById("name");
-
-    function promptUser() {
-        if (name != null) {
-            name = prompt("Enter your loved one name:");
-        }
+    function saveMsg() {
+        var texto = document.querySelector("#texto");
+        var mensagemTexto = document.querySelector("#msg").value;
+        hidePrompt();
+        texto.textContent = mensagemTexto;
 
     }
 </script>
