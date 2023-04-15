@@ -4,17 +4,21 @@
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
-    </style>
-    <style>
+
         body {
             transition-duration: 1012ms;
             background: linear-gradient(to right, #ff00cc, #333399);
+            font-family: 'Alkatra', cursive;
             margin: 0;
             height: 100svh;
+        }
+
+        div.main {
+            margin: 0;
+            height: 96%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Alkatra', cursive;
         }
 
         #heart {
@@ -61,6 +65,7 @@
 
 
         button {
+            transition-duration: 712ms;
             height: 80%;
             font-family: 'Alkatra', cursive;
             font-size: 80%;
@@ -74,13 +79,19 @@
             cursor: pointer;
         }
 
+        button:hover {
+            transform: scale(102%);
+        }
+
         .message {
             display: grid;
             text-align: center;
         }
 
         #texto {
-            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
             text-align: center;
             font-size: 200%;
             margin-bottom: 2svh;
@@ -96,7 +107,7 @@
             padding: 10px;
             border-radius: 50%;
             position: fixed;
-            margin-top: 60svh;
+            bottom: 15svh;
             backdrop-filter: brightness(110%);
         }
 
@@ -112,11 +123,36 @@
             width: 30px;
         }
 
+        #signtrTxt {
+            height: 10px;
+            line-height: 10px;
+        }
+
         @media only screen and (max-width: 751px) {
             body {
                 font-size: 200%;
             }
 
+            div.prompt {
+                height: 500px;
+            }
+
+            button {
+                margin-top: 20px;
+                padding: 20px;
+            }
+
+            #texto{
+                font-size: 120%;
+            }
+
+            textarea {
+                height: 100%;
+            }
+
+            div.main {
+                height: calc(100%-10px);
+            }
 
             #shareBTN {
                 transform: scale(180%);
@@ -125,33 +161,42 @@
             #shareBTN:hover {
                 transform: scale(182%);
             }
+
+            #signtrTxt {
+                height: 10px;
+                line-height: 8px;
+                font-size: 70%;
+            }
         }
     </style>
-    <title>TheAnxtyRoom</title>
+    <title>TheLoveMSG</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div class="prompt">
-        <label for="msg">Mensagem:</label>
-        <textarea name="msg" id="msg" cols="30" rows="4"></textarea>
-        <button onclick="saveMsg()">Guardar</button>
-    </div>
-    <div class="message">
-        <div id="texto">
+    <div class="main">
+        <div class="prompt">
+            <label for="msg">Mensagem:</label>
+            <textarea name="msg" id="msg" cols="30" rows="4"></textarea>
+            <button onclick="saveMsg()">Guardar</button>
         </div>
-        <div id="heart" onclick="showPrompt()">❤️</div>
+        <div class="message">
+            <div id="texto">
+            </div>
+            <div id="heart" onclick="showPrompt()">❤️</div>
+        </div>
+        <div id="shareBTN" onclick="copyLink();">
+            <img src="link-button-svgrepo-com.svg" alt="share message">
+        </div>
     </div>
-    <div id="shareBTN" onclick="copyLink();">
-        <img src="link-button-svgrepo-com.svg" alt="share message">
-    </div>
-    by patolas
+    <p id="signtrTxt">by patolas</p>
 </body>
 <script>
     var heart = document.querySelector("#heart");
     var prompte = document.querySelector(".prompt");
+    var xereLinque = document.querySelector("#shareBTN");
     var baquegraunde = document.body;
 
 
@@ -159,13 +204,15 @@
         heart.style.display = "none";
         prompte.style.visibility = "visible";
         prompte.style.opacity = 1;
-        baquegraunde.style.backdropFilter = "brightness(60%)";
+        xereLinque.style.display = "none";
+        baquegraunde.style.backdropFilter = "brightness(40%)";
     }
 
     function hidePrompt() {
         heart.style.display = "flex";
         prompte.style.visibility = "hidden";
         prompte.style.opacity = 0;
+        xereLinque.style.display = "flex";
         baquegraunde.style.backdropFilter = "brightness(100%)";
     }
 
