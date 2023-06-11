@@ -1,0 +1,9 @@
+StudyStats
+
+App to help studying and remembering stuff
+
+The user creates a study, provides content so the program can generate questions.
+Everyday for X time, the program generates different questions about everything on the content, and analyze it, make a score for how many right answers the user got.
+Create a graph with all the values, let the user know if he needs to study more and make specific questions about the wrong ones.
+
+Might need an API or an AI to generate the questions. 

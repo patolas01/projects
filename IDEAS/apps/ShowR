@@ -1,0 +1,7 @@
+ShowR
+
+Shower counter for saving purposes.
+Uses a timer to count how many liters the user spent to take each shower
+It uses the liters/minute with the time to calculate a estimated waste of water.
+Multiply by the price of the service and gives the price for each shower.
+Uses history to let the user know when he took the last shower.

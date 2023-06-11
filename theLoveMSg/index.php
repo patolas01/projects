@@ -7,8 +7,11 @@
 
         body {
             transition-duration: 1012ms;
-            background: linear-gradient(to right, #ff00cc, #333399);
+            //background: linear-gradient(to right, #ff00cc, #333399);
+            background: linear-gradient(to right, #333852, #311a40);
+            //background-image: url('https://youtu.be/BFhp7Y0iLSA');
             font-family: 'Alkatra', cursive;
+            color: white;
             margin: 0;
             height: 100svh;
         }
@@ -23,7 +26,7 @@
 
         #heart {
             display: flex;
-            font-size: 210%;
+            font-size: 190%;
             text-align: center;
             margin: 0 auto;
             cursor: pointer;
@@ -107,8 +110,12 @@
             padding: 10px;
             border-radius: 50%;
             position: fixed;
-            bottom: 15svh;
+            bottom: 10svh;
             backdrop-filter: brightness(110%);
+            background-image: url('link-button-svgrepo-com.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 60%;
         }
 
         #shareBTN:hover {
@@ -124,9 +131,10 @@
         }
 
         #signtrTxt {
-            text-align: left;
+            color: black;
+            text-align: right;
             margin: 0;
-            margin-left: 2px;
+            margin-right: 5px;
         }
 
         a {
@@ -140,7 +148,7 @@
 
         @media only screen and (max-width: 751px) {
             body {
-                font-size: 200%;
+                font-size: 150%;
             }
 
             div.prompt {
@@ -155,7 +163,10 @@
             }
 
             #texto {
-                font-size: 110%;
+                height: 45svh;
+                overflow: scroll;
+                font-size: 100%;
+                margin-top: -10svh;
             }
 
             textarea {
@@ -163,25 +174,25 @@
             }
 
             div.main {
-                height: calc(100%-10px);
+                height: calc(100%-8px);
             }
 
             #shareBTN {
-                transform: scale(140%);
+                transform: scale(110%);
             }
 
             #shareBTN:hover {
-                transform: scale(142%);
+                transform: scale(112%);
             }
 
             #signtrTxt {
-                height: 10px;
-                line-height: 8px;
-                font-size: 70%;
+                height: 5px;
+                font-size: 40%;
             }
         }
     </style>
     <title>TheLoveMSG</title>
+    <link rel="shortcut icon" href="hrt.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,23 +205,22 @@
             <textarea name="msg" id="msg" cols="30" rows="4"></textarea>
             <button onclick="saveMsg()">Guardar</button>
         </div>
-            <div class="message">
-                <div id="texto">
-                </div>
-                <div id="heart" onclick="showPrompt()">❤️</div>
+        <div class="message">
+            <div id="texto">
             </div>
-            <div id="shareBTN" name="send_msg">
-                <img src="link-button-svgrepo-com.svg" alt="share message">
-            </div>
+            <div id="heart" onclick="showPrompt()">❤️</div>
+        </div>
+        <div id="shareBTN" name="send_msg">
+            <a id="shareLink" href="javascript:void(0);" onclick="copyURL()"></a>
+        </div>
     </div>
     <p id="signtrTxt">by <a target="_blank" href="https://www.instagram.com/paulo.leal04">@patolas</a></p>
 </body>
 <script>
     var heart = document.querySelector("#heart");
     var prompte = document.querySelector(".prompt");
-    var xereLinque = document.querySelector("#shareBTN");
+    var xereLinque = document.querySelector("#shareLink");
     var baquegraunde = document.body;
-
 
     function showPrompt() {
         heart.style.display = "none";
@@ -228,13 +238,80 @@
         baquegraunde.style.backdropFilter = "brightness(100%)";
     }
 
+    function encodeMessage(message) {
+        var encodedMessage = btoa(message);
+        return encodedMessage;
+    }
+
+    function decodeMessage(encodedMessage) {
+        var decodedMessage = atob(encodedMessage);
+        return decodedMessage;
+    }
+
     function saveMsg() {
         var texto = document.querySelector("#texto");
         var mensagemTexto = document.querySelector("#msg").value;
         hidePrompt();
         texto.textContent = mensagemTexto;
-
+        var encodedMessage = encodeMessage(mensagemTexto);
+        var newURL = updateURLParameter(window.location.href, 'msg', encodedMessage);
+        xereLinque.href = newURL;
     }
-</script>
 
+    function copyURL() {
+        var shareLink = document.querySelector("#shareLink");
+        var dummyInput = document.createElement("input");
+        document.body.appendChild(dummyInput);
+        dummyInput.value = shareLink.href;
+        dummyInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummyInput);
+        alert("Link copiado!");
+    }
+
+    // Extract the message content from URL parameters and decode
+    function getMessageFromURL() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var encodedMessage = urlParams.get('msg');
+        if (encodedMessage) {
+            var decodedMessage = decodeMessage(encodedMessage);
+            var msgTextarea = document.querySelector("#msg");
+            msgTextarea.value = decodedMessage;
+            var texto = document.querySelector("#texto");
+            texto.textContent = decodedMessage;
+            xereLinque.href = removeURLParameter(window.location.href, 'msg'); // Remove the existing 'msg' parameter from the URL
+        }
+    }
+
+    // Update or add a parameter in the URL
+    function updateURLParameter(url, param, value) {
+        var newURL = url;
+        var regex = new RegExp('([?&])' + param + '=.*?(&|$)', 'i');
+        var separator = newURL.indexOf('?') !== -1 ? '&' : '?';
+
+        if (newURL.match(regex)) {
+            newURL = newURL.replace(regex, '$1' + param + '=' + value + '$2');
+        } else {
+            newURL = newURL + separator + param + '=' + value;
+        }
+
+        return newURL;
+    }
+
+    // Remove a parameter from the URL
+    function removeURLParameter(url, param) {
+        var newURL = url;
+        var regex = new RegExp('([?&])' + param + '=.*?(&|$)', 'i');
+
+        if (newURL.match(regex)) {
+            newURL = newURL.replace(regex, '$1');
+            newURL = newURL.replace(/[?&]$/, '');
+        }
+
+        return newURL;
+    }
+
+    // Call the function to extract the message from URL when the page loads
+    getMessageFromURL();
+</script>
 </html>
