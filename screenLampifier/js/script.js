@@ -43,7 +43,7 @@ setInterval(() => {
 function speedC() {
     clearInterval(fade);
     speed = document.getElementById("speed").value;
-    console.log(speed);
+    //console.log(speed);
     fade = setInterval(function () {
         if (r > 0 && b == 0) {
             r--;
@@ -58,40 +58,15 @@ function speedC() {
             b--;
         }
         document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-        
     }, speed);
-    /*console.log(speed);*/
-    /*return document.getElementById("speed").value;*/
-
 }
-
-
-
-
 
 function bright() {
-    document.getElementById("bright-value").innerText = document.getElementById("brightness").value;
-    document.body.style.backdropFilter = "brightness(" + document.getElementById("brightness").value + "%)";
+    const brightnessValue = document.getElementById("brightness").value;
+    document.getElementById("bright-value").innerText = brightnessValue;
+    document.body.style.backdropFilter = "brightness(" + brightnessValue + "%)";
 }
 
-/*function fadeScreenBrightness() {
-    let brightness = 100;
-    let isFadingOut = true;
-    const fadeInterval = setInterval(() => {
-        if (isFadingOut) {
-            brightness--;
-            if (brightness === 10) {
-                isFadingOut = false;
-            }
-        } else {
-            brightness++;
-            if (brightness === 100) {
-                isFadingOut = true;
-            }
-        }
-        document.documentElement.style.filter = `brightness(${brightness}%)`;
-    }, 65);
-}
-
-// Call the function to start the interval
-fadeScreenBrightness();*/
+// Add event listeners with input for the two input elements
+document.getElementById("speed").addEventListener('input', speedC);
+document.getElementById("brightness").addEventListener('input', bright);

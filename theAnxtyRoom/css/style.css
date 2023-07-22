@@ -353,8 +353,15 @@
             display: none;
         }
 
-        #logoIntro {
+        img#logoIntro {
+            width: 50px;
+            margin: 0;
             display: none;
+        }
+
+        .middle-box img#logo {
+            padding-top: 3svh;
+            width: 10svh;
         }
 
 
@@ -366,7 +373,7 @@
 
 
         /*RESPONSIVE*/
-        @media only screen and (max-width: 751px) {
+        @media only screen and (max-width: 1001px) {
             #mainIntro {
                 width: 100svw;
                 display: block;
@@ -421,7 +428,7 @@
                 margin: 0;
                 padding: 0;
                 width: 100vw !important;
-                height: calc(90svh - 65px);
+                height: calc(90svh - 6svh);
                 border-bottom: 1px #888888 solid;
             }
 
@@ -445,20 +452,21 @@
             }
 
             .middle-box img#logo {
-                transform: scale(80%);
+                padding-top: 3svh;
+                width: 8svh;
             }
 
             header {
                 margin: 0;
                 padding: 0;
-                padding-top: 3%;
-                padding-bottom: 3%;
+                padding-top: 2svh;
+                padding-bottom: 2svh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: sticky;
                 width: 100svw;
-                height: 65px;
+                height: 5svh;
                 background-color: #112;
                 border-bottom: 1px #888888 solid;
             }
@@ -504,8 +512,8 @@
                 opacity: 0;
                 justify-content: center;
                 align-items: center;
-                top: 11%;
-                padding-top: 15px;
+                top: 8%;
+                padding-top: 0px;
                 position: absolute;
                 /*border: 1px solid red;*/
                 height: 100px;
@@ -520,8 +528,8 @@
 
 
             div.respBottom {
-                width: 90svw;
-                height: 7svh;
+                width: 100svw;
+                height: calc(7svh - 1px);
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -535,7 +543,7 @@
             }
 
             #respB-icon img {
-                width: 25px;
+                width: 35px;
             }
 
 
@@ -583,7 +591,7 @@
                 background-image: none;
             }
 
-            input[type=search]::placeholder{
+            input[type=search]::placeholder {
                 padding-left: 15%;
             }
 
