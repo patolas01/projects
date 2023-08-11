@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbered Grid</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .grid {
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(7, 62px);
+            grid-template-rows: repeat(7, 62px);
+            gap: 0px;
+            border: 1px solid #000;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2e5099;
+            border: 1px solid #98a6c4;
+            cursor: pointer;
+        }
+
+        /* Add a class to label cells to change their background color */
+        .label {
+            background-color: #406cca;
+            user-select: none;
+        }
+
+        .boat {
+            background-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid" id="gridContainer">
+    </div>
+    <script>
+        const gridContainer = document.getElementById('gridContainer');
+        let boatsPlaced = 0;
+        let firstCell = null;
+
+        function placeBoat(cell) {
+            if (boatsPlaced >= 2 || cell.classList.contains('boat')) return;
+
+            if (boatsPlaced === 0) {
+                firstCell = cell;
+                cell.classList.add('boat');
+                boatsPlaced++;
+            } else if (boatsPlaced === 1) {
+                const firstIndex = parseInt(firstCell.id);
+                const secondIndex = parseInt(cell.id);
+
+                if (secondIndex === firstIndex + 1 || secondIndex === firstIndex + 7) {
+                    cell.classList.add('boat');
+                    boatsPlaced++;
+                }
+            }
+        }
+
+        // Generate rows and cells with numbers and letters
+        for (let i = 1; i <= 7; i++) {
+            for (let j = 0; j <= 6; j++) {
+                const cell = document.createElement('div');
+                const cellId = (i - 1) * 7 + j;
+
+                // Add the class 'cell' to all cells
+                cell.classList.add('cell');
+
+                // Set ID for the cell
+                cell.id = cellId;
+
+                if (j === 0 && i != 1) {
+                    // Create and append row label (numbers)
+                    cell.textContent = i - 1;
+
+                    // Add the class 'label' to the row label cell
+                    cell.classList.add('label');
+                }
+
+                if (i === 1) {
+                    cell.classList.add('label');
+                }
+
+                if (i === 1 && j !== 0) {
+                    // Create and append column label (letters)
+                    cell.textContent = String.fromCharCode(64 + j);
+
+                    // Add the class 'label' to the column label cell
+                    cell.classList.add('label');
+                }
+
+                // Add event listener to handle boat placement
+                cell.addEventListener('click', () => {
+                    placeBoat(cell);
+                });
+
+                gridContainer.appendChild(cell);
+            }
+        }
+    </script>
+</body>
+
+</html>

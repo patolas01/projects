@@ -5,6 +5,7 @@
             letter-spacing: small;
             margin: 0;
             padding: 0;
+            height: 100svh;
         }
 
         .container {
@@ -203,6 +204,13 @@
         article h4 {
             /*border-bottom: 1px solid #888888;*/
             padding-bottom: 5px;
+            padding-top: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .descPost{
+            margin-top: 0;
         }
 
         h3 {
@@ -261,7 +269,7 @@
         /* Track */
         ::-webkit-scrollbar-track {
             background: transparent;
-            margin: 15px;
+            margin: 0;
         }
 
         /* Handle */
@@ -501,7 +509,7 @@
             img.post.profilePic {
                 width: 50px;
                 height: 50px;
-                border: 3px solid black;
+                /*border: 3px solid black;*/
             }
 
             div.backTop {
@@ -546,24 +554,6 @@
                 width: 35px;
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             ::-webkit-scrollbar {
                 display: none;
             }
@@ -577,10 +567,10 @@
                 background-position-x: 10px;
                 background-repeat: no-repeat;
                 background-image: url("https://cdn-icons-png.flaticon.com/512/3917/3917754.png");
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
                 font-size: 110%;
                 text-align: center;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                border: 0;
+                border: 0; 
                 border-radius: 50px;
                 width: 220px;
                 height: 40px;
