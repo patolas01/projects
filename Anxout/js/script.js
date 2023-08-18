@@ -21,6 +21,8 @@ function likePost(id) {
     }
 }
 
+
+
 /*function topShow() {
     if (document.querySelector("div .middle-box").scrollTop > 350) {
         document.querySelector("div.backTop").style.opacity = "1";

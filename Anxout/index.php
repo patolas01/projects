@@ -2,35 +2,28 @@
 <html>
 
 <head>
-    <title>TheAnxtyRoom</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/anxtyLogo.png" type="image/x-icon">
-    <script src="js/jquery-3.6.3.slim.min.js"></script>
-    <script src="js/script.js"></script>
-    
+    <title>Anxout</title>
+    <?php include 'db/init.html'; ?>
 </head>
 
 <body onload="postsGen();">
     <div class="container">
         <div class="box left-box">
             <p>Buttons for publish, make friends or vote on a pole.</p>
-            <a href="newPost.html">
+            <a href="newPost.php">
                 <div class="buttonMain" id="addPost">Create a post</div>
             </a>
         </div>
 
         <header>
             <div id="addPost-r">
-                <img src="img/add.png" alt="addPost">
+                <a href="newPost.php">
+                    <img src="img/add.png" alt="addPost">
+                </a>
+
             </div>
             <div id="searchBar-r">
-                <input type="search" name="searchBar" id="searchBar" placeholder="search...">
+                <input type="search" name="searchBar" id="searchBar">
             </div>
             <div id="profile-r">
                 <img class="post profilePic"
@@ -46,7 +39,7 @@
         <div class="box middle-box">
             <div id="title">
                 <img id="logo" src="img/anxtyLogo.png" alt="logo">
-                <h1>Welcome to The Anxty Room!</h1>
+                <h1>Anxout</h1>
                 <h3>You can do whatever you want, nobody's gonna judge you</h3>
             </div>
 
@@ -54,7 +47,9 @@
         </div>
 
         <div class="respBottom">
-            <a href=""><div id="respB-icon"><img src="img/icons8-casa.svg" alt=""></div></a>
+            <a href="">
+                <div id="respB-icon"><img src="img/icons8-casa.svg" alt=""></div>
+            </a>
         </div>
 
         <div class="box right-box">

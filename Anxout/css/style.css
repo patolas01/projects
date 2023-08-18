@@ -1,8 +1,8 @@
         body {
             background-color: #112;
             color: #888888;
-            font-family: 'Source Sans Pro', sans-serif !important;
-            letter-spacing: small;
+            font-family: 'Bricolage Grotesque', sans-serif !important;
+            /*letter-spacing: small;*/
             margin: 0;
             padding: 0;
             height: 100svh;
@@ -90,10 +90,9 @@
 
         input::placeholder {
             color: #1b1b1b;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: smaller;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 100%;
             text-align: left;
-
         }
 
         #introSubtitle {
