@@ -9,6 +9,7 @@
         }
 
         .container {
+            height: 100svh;
             display: flex;
             flex-wrap: wrap;
         }
@@ -109,7 +110,7 @@
 
 
         .box {
-            height: calc(100vh - 40px);
+            height: 100svh;
             box-sizing: border-box;
             border-top: 0;
             border-bottom: 0;

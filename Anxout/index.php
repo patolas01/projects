@@ -8,33 +8,8 @@
 
 <body onload="postsGen();">
     <div class="container">
-        <div class="box left-box">
-            <p>Buttons for publish, make friends or vote on a pole.</p>
-            <a href="newPost.php">
-                <div class="buttonMain" id="addPost">Create a post</div>
-            </a>
-        </div>
 
-        <header>
-            <div id="addPost-r">
-                <a href="newPost.php">
-                    <img src="img/add.png" alt="addPost">
-                </a>
-
-            </div>
-            <div id="searchBar-r">
-                <input type="search" name="searchBar" id="searchBar">
-            </div>
-            <div id="profile-r">
-                <img class="post profilePic"
-                    src="db/img/default_user.png"
-                    alt="Profile Picture">
-            </div>
-        </header>
-
-        <!--div class="backTop" onclick="goTop();">
-            <img src="img/topArrow.png" alt="topArrow">
-        </div-->
+        <?php include 'db/header.html'; ?>
 
         <div class="box middle-box">
             <div id="title">
@@ -46,15 +21,7 @@
             <!--Post Template-->
         </div>
 
-        <div class="respBottom">
-            <a href="">
-                <div id="respB-icon"><img src="img/icons8-casa.svg" alt=""></div>
-            </a>
-        </div>
-
-        <div class="box right-box">
-            Profile, settings and preferences. Maybe friends list or search profiles.
-        </div>
+        <?php include 'db/footer.html'; ?>
     </div>
 </body>
 
