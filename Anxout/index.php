@@ -27,7 +27,7 @@
             </div>
             <div id="profile-r">
                 <img class="post profilePic"
-                    src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png"
+                    src="db/img/default_user.png"
                     alt="Profile Picture">
             </div>
         </header>

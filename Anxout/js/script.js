@@ -2,7 +2,7 @@
 function postsGen() {
     var num = 15;
     for (let i = 0; i < num; i++) {
-        document.querySelector("div .middle-box").innerHTML += '<article class="postArticle" id="i' + i + '"> <div class="userInfo"><img class="post UserPic" src="https://e7.pngegg.com/pngimages/753/432/png-clipart-user-profile-2018-in-sight-user-conference-expo-business-default-business-angle-service-thumbnail.png" alt="User Profile Picture"> <p>@usertag</p> <div class="react"><div class="reactLike" id="i' + i + '" onclick="likePost(' + i + ');"><img src="https://images.emojiterra.com/twitter/v14.0/512px/1f90d.png" alt="Like Button"></div></div> </div> <h4>Title of the post</h4> <p class="descPost">Description of the post. This is required. user could add image (it will appear in a symbol or icon telling that the user added an image)</p> </article>';
+        document.querySelector("div .middle-box").innerHTML += '<article class="postArticle" id="i' + i + '"> <div class="userInfo"><img class="post UserPic" src="db/img/default_user.png" alt="User Profile Picture"> <p>@usertag</p> <div class="react"><div class="reactLike" id="i' + i + '" onclick="likePost(' + i + ');"><img src="https://images.emojiterra.com/twitter/v14.0/512px/1f90d.png" alt="Like Button"></div></div> </div> <h4>Title of the post</h4> <p class="descPost">Description of the post. This is required. user could add image (it will appear in a symbol or icon telling that the user added an image)</p> </article>';
     }
 }
 
