@@ -13,7 +13,7 @@
 
         <div class="box middle-box">
             <div id="title">
-                <img id="logo" src="img/anxtyLogo.png" alt="logo">
+                <!--img id="logo" src="img/anxtyLogo.png" alt="logo"-->
                 <h1>Anxout</h1>
                 <h3>You can do whatever you want, nobody's gonna judge you</h3>
             </div>
