@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Cena</title>
+</head>
+
+<style>
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: blue; /* Set your initial background color */
+    cursor: none;
+    cursor: text;
+}
+
+.shadow {
+    cursor: none;
+    position: absolute;
+    width: 20px; /* Adjust the size of the shadow */
+    height: 20px; /* Adjust the size of the shadow */
+    pointer-events: none;
+    box-shadow: 10px 5px 5px 2px;
+    transition: background-color 0.3s ease; /* Transition for color change */
+    transform: translate(-50%, -50%); /* Center the shadow on the cursor */
+    mix-blend-mode: difference; /* Blend mode to make the shadow stand out */
+    border-radius: 50%;
+}
+
+
+
+
+</style>
+<body>
+
+    <div class="shadow"></div>
+    <script>
+      const shadow = document.querySelector(".shadow");
+
+        document.addEventListener("mousemove", (e) => {
+            // Calculate the new position of the shadow
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // Update the position of the shadow
+            shadow.style.left = x + "px";
+            shadow.style.top = y + "px";
+
+            // Update the shadow color based on background color
+            const bgColor = getComputedStyle(document.body).backgroundColor;
+            shadow.style.backgroundColor = bgColor;
+        });
+    
+
+
+    </script>
+    
+</body>
+</html>
