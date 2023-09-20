@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+</head>
+
+<body>
+    <div id="editor">This is some sample content.</div>
+    <br>
+    <button onclick="getHTMLcode()">Save Article</button>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log('Editor was initialized', editor);
+                editor.setData('This is some sample content.');
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+        // Function to retrieve formatted text from CKEditor
+        function getHTMLcode() {
+            if (ClassicEditor) {
+                return ClassicEditor.getData().then(function (formattedText) {
+                    console.log(formattedText);
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            } else {
+                console.error('Editor instance not found!');
+            }
+        }
+    </script>
+</body>
+
+</html>
