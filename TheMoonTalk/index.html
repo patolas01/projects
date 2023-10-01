@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="img/moon.svg" type="image/x-icon">
+    <title>TheMoonTalk</title>
+</head>
+
+<body>
+    <div class="container">
+        <img class="moon" src="img/moon.svg" alt="" srcset="">
+    </div>
+
+</body>
+
+<script>
+
+    document.querySelector(".moon").addEventListener("click", () => {
+        const message = prompt("Write your message (100 characters max):");
+        if (message !== null && message !== "") {
+            createStar(message);
+        }
+    });
+
+    function createStar(message) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = `${getRandomPosition()}px`;
+        star.style.top = `${getRandomPosition()}px`;
+
+        const tooltip = document.createElement("div");
+        tooltip.className = "tooltip";
+        tooltip.textContent = message;
+
+        star.appendChild(tooltip);
+
+        document.body.appendChild(star);
+
+        // Remove the star after a certain duration (e.g., 10 seconds)
+        setTimeout(() => {
+            star.remove();
+        }, 20000);
+    }
+
+    function getRandomPosition() {
+        // Return a random position within the container size
+        const containerWidth = document.querySelector(".container").offsetWidth;
+        const containerHeight = document.querySelector(".container").offsetHeight;
+        return Math.random() * (containerWidth - 20); // Adjust for star size
+    }
+
+</script>
+
+
+
+</html>

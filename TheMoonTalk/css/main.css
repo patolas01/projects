@@ -1,0 +1,54 @@
+body {
+    background-image: url(../img/space.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.moon {
+    filter: grayscale(100%);
+    transition: all 2.1s;
+    /*transition: filter 2.4s;*/
+    user-select: none;
+    cursor: pointer;
+    margin-top: 30svh;
+    width: 12svw;
+    filter: brightness(85%);
+    -webkit-user-drag: none;
+}
+
+.moon:hover {
+    filter: brightness(120%) drop-shadow(0 0 60px rgb(15, 15, 15));
+    scale: 112%;
+    rotate: -4.5deg;
+    
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    /* Set the width and height as per your star image */
+    height: 20px;
+    background-image: url('star.png');
+    /* Replace 'star.png' with your star image URL */
+    background-size: cover;
+    cursor: pointer;
+}
+
+.star:hover .tooltip {
+    display: block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
