@@ -10,9 +10,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <img class="moon" src="img/moon.svg" alt="" srcset="">
-    </div>
+    <img class="moon" src="img/moon.svg" alt="the moon">
+
+    
+
 
 </body>
 
@@ -28,8 +29,8 @@
     function createStar(message) {
         const star = document.createElement("div");
         star.className = "star";
-        star.style.left = `${getRandomPosition()}px`;
-        star.style.top = `${getRandomPosition()}px`;
+        star.style.left = `${getRandomPositionWidth()}px`;
+        star.style.top = `${getRandomPositionHeight()}px`;
 
         const tooltip = document.createElement("div");
         tooltip.className = "tooltip";
@@ -42,14 +43,18 @@
         // Remove the star after a certain duration (e.g., 10 seconds)
         setTimeout(() => {
             star.remove();
-        }, 20000);
+        }, 86400000);
     }
 
-    function getRandomPosition() {
+    function getRandomPositionWidth() {
         // Return a random position within the container size
-        const containerWidth = document.querySelector(".container").offsetWidth;
-        const containerHeight = document.querySelector(".container").offsetHeight;
+        const containerWidth = document.body.clientWidth;
         return Math.random() * (containerWidth - 20); // Adjust for star size
+    }
+    function getRandomPositionHeight() {
+        // Return a random position within the container size
+        const containerHeight = document.body.clientHeight;
+        return Math.random() * (containerHeight - 20); // Adjust for star size
     }
 
 </script>
