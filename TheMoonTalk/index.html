@@ -17,7 +17,6 @@
 </body>
 
 <script>
-
     document.querySelector(".moon").addEventListener("click", () => {
         const message = prompt("Write your message (100 characters max):");
         if (message !== null && message !== "") {
@@ -25,11 +24,64 @@
         }
     });
 
+    // Function to auto-spawn stars for testing
+    function autoSpawnStars(numStars) {
+        for (let i = 0; i < numStars; i++) {
+            const message = `Test Star ${i + 1}`;
+            createStar(message);
+        }
+    }
+
     function createStar(message) {
+        const gridSize = 40; // Adjust for your grid size
+        const starSize = 40; // Adjust for your star image size
+        const columns = Math.floor(window.innerWidth / gridSize);
+        const rows = Math.floor(window.innerHeight / gridSize);
+        const existingStars = document.querySelectorAll(".star");
+        const margin = 40;
+        const moon = document.querySelector(".moon");
+        const moonRect = moon.getBoundingClientRect();
+
+        let newPosition = getRandomGridPosition(columns, rows, gridSize);
+
+        // Function to check if the new star overlaps with any existing stars or moon
+        function isOverlap() {
+            for (const star of existingStars) {
+                const starRect = star.getBoundingClientRect();
+                if (
+                    newPosition.left < starRect.right + margin &&
+                    newPosition.right > starRect.left - margin &&
+                    newPosition.top < starRect.bottom + margin &&
+                    newPosition.bottom > starRect.top - margin
+                ) {
+                    return true; // Overlap detected with other stars
+                }
+            }
+
+            // Check distance from the center of the moon
+            const moonCenterX = moonRect.left + moonRect.width / 2;
+            const moonCenterY = moonRect.top + moonRect.height / 2;
+            const distanceToMoon = Math.sqrt(
+                Math.pow(newPosition.left + starSize / 2 - moonCenterX, 2) +
+                Math.pow(newPosition.top + starSize / 2 - moonCenterY, 2)
+            );
+
+            if (distanceToMoon < moonRect.width / 2 + margin) {
+                return true; // Overlap detected with the moon
+            }
+
+            return false; // No overlap
+        }
+
+        // Keep adjusting the position until no overlap is found
+        while (isOverlap()) {
+            newPosition = getRandomGridPosition(columns, rows, gridSize);
+        }
+
         const star = document.createElement("div");
         star.className = "star";
-        star.style.left = `${getRandomPosition()}px`;
-        star.style.top = `${getRandomPosition()}px`;
+        star.style.left = `${newPosition.left}px`;
+        star.style.top = `${newPosition.top}px`;
 
         const tooltip = document.createElement("div");
         tooltip.className = "tooltip";
@@ -45,14 +97,18 @@
         }, 20000);
     }
 
-    function getRandomPosition() {
-        // Return a random position within the container size
-        const containerWidth = document.querySelector(".container").offsetWidth;
-        const containerHeight = document.querySelector(".container").offsetHeight;
-        return Math.random() * (containerWidth - 20); // Adjust for star size
+    function getRandomGridPosition(columns, rows, gridSize) {
+        // Return a random position within the grid
+        return {
+            left: Math.floor(Math.random() * columns) * gridSize,
+            top: Math.floor(Math.random() * rows) * gridSize,
+        };
     }
 
+    // Auto-spawn 5 stars for testing
+    autoSpawnStars(50);
 </script>
+
 
 
 
