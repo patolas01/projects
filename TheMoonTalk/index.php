@@ -10,9 +10,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <img class="moon" src="img/moon.svg" alt="" srcset="">
-    </div>
+    <img class="moon" src="img/moon.svg" alt="the moon">
+
+    
+
 
 </body>
 
@@ -94,7 +95,7 @@
         // Remove the star after a certain duration (e.g., 10 seconds)
         setTimeout(() => {
             star.remove();
-        }, 20000);
+        }, 86400000);
     }
 
     function getRandomGridPosition(columns, rows, gridSize) {
@@ -103,6 +104,11 @@
             left: Math.floor(Math.random() * columns) * gridSize,
             top: Math.floor(Math.random() * rows) * gridSize,
         };
+    }
+    function getRandomPositionHeight() {
+        // Return a random position within the container size
+        const containerHeight = document.body.clientHeight;
+        return Math.random() * (containerHeight - 20); // Adjust for star size
     }
 
     // Auto-spawn 5 stars for testing
