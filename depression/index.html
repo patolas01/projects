@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression in Short</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- MAIN TITLE -->
+        <div id="main-title" class="fade-in">
+            <h1>Deppression</h1>
+            <h1>in Short</h1>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="step" id="step1">
+            <div id="title4" class="fade-in">Trust is good.</div>
+            <div id="title4" class="fade-in">And bad.</div>
+            <div id="title4" class="fade-in">At the same time.</div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step" id="step2">
+            <div id="title4" class="fade-in">You see, trust has one issue.</div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step" id="step3">
+            <div id="trust-title">Level of Trust</div>
+            <progress name="trust-level" id="trust-level" value="100" max="100"></progress>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step" id="step4">
+            <div id="title4" class="fade-in">Once you lose it.</div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="step" id="step5">
+            <div id="title4" class="fade-in">You can never get it back.</div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="step" id="step6">
+            <div id="title4" class="fade-in">So be careful.</div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="step" id="step7">
+            <div id="title4" class="fade-in">With what you say.</div>
+        </div>
+
+        <!-- STEP 8 -->
+        <div class="step" id="step8">
+            <div id="title4" class="fade-in">And with what you do.</div>
+        </div>
+
+        <!-- STEP 9 -->
+        <div class="step" id="step9">
+            <div id="title4" class="fade-in">Because trust is not tradable.</div>
+        </div>
+
+        <!-- STEP 10 -->
+        <div class="step" id="step10">
+            <div id="title4" class="fade-in">You have to earn it.</div>
+        </div>
+
+
+        <!-- STEP 11 -->
+        <div id="final-title" class="fade-in">
+            <h1>Talk to someone.</h1>
+            <h1>Some people are not as bad as you think.</h1>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="button-bottom" id="button-container">
+        <button id="next-step" class="fade-in" style="display: none;"></button>
+    </div>
+
+
+
+
+
+
+    <!-- MAGIC -->
+    <script>
+        <!-- MAGIC -->
+        const container = document.querySelector('.container');
+        const steps = document.querySelectorAll('.step');
+        const button = document.getElementById('next-step');
+        const mainTitle = document.getElementById('main-title');
+        const finalTitle = document.getElementById('final-title');
+        const trustTitle = document.getElementById('trust-title');
+        const trustLevel = document.getElementById('trust-level');
+        let currentStep = 0;
+
+        function fadeIn(element) {
+            element.style.opacity = 0;
+            element.style.display = 'block';
+            (function fade() {
+                let val = parseFloat(element.style.opacity);
+                if (!((val += 0.02) > 1)) {
+                    element.style.opacity = val;
+                    requestAnimationFrame(fade);
+                }
+            })();
+        }
+
+        function fadeOut(element, callback) {
+            element.style.opacity = 1;
+            (function fade() {
+                if ((element.style.opacity -= 0.02) <= 0) { element.style.display = 'none'; callback(); } else {
+                    requestAnimationFrame(fade);
+                }
+            })();
+        } function showNextStep() {
+            if (currentStep == 2) {
+                currentStep++; if
+                    (currentStep < steps.length) {
+                        fadeIn(steps[currentStep]); if (currentStep >= 3) {
+                            fadeIn(trustLevel);
+                            fadeIn(trustTitle); // Mostrar o título da barra de progresso ao chegar no último passo
+                        }
+                    updateProgressBar();
+                } else {
+                    fadeOut(document.getElementById('button-container'));
+                    fadeOut(mainTitle); // Esconder o título principal ao finalizar os passos
+                }
+            }
+
+
+            else {
+
+                fadeOut(steps[currentStep], () => {
+                    currentStep++;
+                    if (currentStep < steps.length) {
+                        fadeIn(steps[currentStep]); if (currentStep >= 3) {
+                            fadeIn(trustLevel);
+                            fadeIn(trustTitle); // Mostrar o título da barra de progresso ao chegar no último passo
+                        }
+                        updateProgressBar();
+                    } else {
+                        fadeOut(document.getElementById('button-container'));
+                        fadeOut(mainTitle); // Esconder o título principal ao finalizar os passos
+                    }
+                });
+                if (currentStep == steps.length - 1) {
+                    fadeOut(trustTitle);
+                    fadeOut(trustLevel);
+                    setTimeout(() => {
+                        fadeIn(finalTitle);
+                    }, 2000);
+                }
+
+            }
+        }
+
+        function updateProgressBar() {
+            trustLevel.value = 100 - (currentStep * 20) + 50; // Ajustar a porcentagem conforme necessário
+        }
+
+        // Ocultar todos os passos inicialmente
+        steps.forEach(step => {
+            step.style.display = 'none';
+        });
+
+        // Ocultar os títulos inicialmente
+        mainTitle.style.display = 'none';
+        finalTitle.style.display = 'none';
+
+        // Mostrar o título principal gradualmente no carregamento da página
+        fadeIn(mainTitle);
+
+        // Após a animação do título principal, esperar 3 segundos e mostrar o botão
+        setTimeout(() => {
+            fadeIn(button);
+        }, 3000);
+
+        button.addEventListener('click', () => {
+            if (currentStep === 0) {
+                fadeOut(mainTitle, () => {
+                    // Mostrar o primeiro passo quando o botão é clicado pela primeira vez
+                    fadeIn(steps[0]);
+                });
+            }
+            showNextStep();
+        });
+
+    </script>
+
+
+    <!-- MADE BY PATOLAS -->
+
+
+
+
+</body>
+
+</html>
