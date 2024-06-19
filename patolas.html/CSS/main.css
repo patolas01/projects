@@ -1,0 +1,62 @@
+body {
+  background-image: url(../IMG/backgroundPAT.png);
+  background-repeat: space;
+  background-repeat: repeat;
+  margin: 0;
+  font-family: Open Sans, Droid Serif;
+}
+
+button {
+  background-color: #C27500;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: black;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 17px 18px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #C27500;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #D40000;
+  color: white;
+
+}
+
+.topnav a.logo {
+  padding: 7px 11px 2px;
+}
+
+.formula {
+  background-image: url(../IMG/backgroundF1.png);
+  background-repeat: space;
+  background-repeat: repeat;
+}
+
+article {
+  text-align: ="center";
+  margin-left: 100px;
+  margin-right: 100px; 
+  margin-bottom: 45px; 
+  margin-top: 45px; 
+  border-style: solid;
+  border-radius: 25px;
+}
