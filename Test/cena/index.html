@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,41 @@
 </head>
 
 <style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: rgb(53, 96, 164);
+        /* Set your initial background color */
+        cursor: none;
+    }
 
-body {
-    margin: 0;
-    overflow: hidden;
-    background-color: blue; /* Set your initial background color */
-    cursor: none;
-    cursor: text;
-}
-
-.shadow {
-    cursor: none;
-    position: absolute;
-    width: 20px; /* Adjust the size of the shadow */
-    height: 20px; /* Adjust the size of the shadow */
-    pointer-events: none;
-    box-shadow: 10px 5px 5px 2px;
-    transition: background-color 0.3s ease; /* Transition for color change */
-    transform: translate(-50%, -50%); /* Center the shadow on the cursor */
-    mix-blend-mode: difference; /* Blend mode to make the shadow stand out */
-    border-radius: 50%;
-}
-
-
-
-
+    .shadow {
+        cursor: none;
+        position: absolute;
+        width: 20px;
+        /* Adjust the size of the shadow */
+        height: 20px;
+        /* Adjust the size of the shadow */
+        pointer-events: none;
+        box-shadow: 10px 5px 5px 2px;
+        transition: background-color 0.3s ease;
+        /* Transition for color change */
+        transform: translate(-50%, -50%);
+        /* Center the shadow on the cursor */
+        mix-blend-mode: difference;
+        /* Blend mode to make the shadow stand out */
+        border-radius: 50%;
+        transition: transform 1s;
+        /*transform: scale(120%);*/
+        cursor: none !important;
+    }
 </style>
-<body>
+
+<body style="cursor: none;">
 
     <div class="shadow"></div>
     <script>
-      const shadow = document.querySelector(".shadow");
+        const shadow = document.querySelector(".shadow");
 
         document.addEventListener("mousemove", (e) => {
             // Calculate the new position of the shadow
@@ -50,12 +55,18 @@ body {
 
             // Update the shadow color based on background color
             const bgColor = getComputedStyle(document.body).backgroundColor;
-            shadow.style.backgroundColor = bgColor;
+            shadow.style.backgroundColor = "#48484849";
         });
-    
+
+        document.addEventListener("click", (e) => {
+            shadow.style.transform = 'scale(10)';
+
+        });
+
 
 
     </script>
-    
+
 </body>
+
 </html>
