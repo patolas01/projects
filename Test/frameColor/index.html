@@ -8,12 +8,25 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS/main.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+
+        .new-amsterdam-regular {
+            font-family: "New Amsterdam", sans-serif;
+            letter-spacing: 2px;
+            font-style: normal;
+        }
+
+        body {
+            background-color: #1b1b1b;
+            color: #ffffff;
+        }
+
         table {
             background-image: url("o0Z5hVo-_400x400.jpg");
         }
 
         td {
-            background-color: white;
+            background-color: #ffffff;
             opacity: 100%;
             border: 0;
             width: 50px;
@@ -42,7 +55,7 @@
     </style>
 </head>
 
-<body>
+<body class="new-amsterdam-regular">
     <h1>Cenas</h1>
     <div id="tableContainer"></div>
 
@@ -74,8 +87,8 @@
 
 
         // Example usage:
-        generateTable(9, 9); 
-        
+        generateTable(9, 9);
+
 
         function colorC(id) {
 
