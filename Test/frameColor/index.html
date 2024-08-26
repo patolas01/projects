@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/main.css">
-    <style>     
-
+    <style>
         table {
             background-image: url("o0Z5hVo-_400x400.jpg");
         }
@@ -17,9 +16,12 @@
             background-color: white;
             opacity: 100%;
             border: 0;
+            width: 50px;
+            height: 50px;
             outline: 1px solid white;
             margin: 0;
             padding: 0;
+            cursor: pointer;
         }
 
         .colorPicker {
@@ -33,7 +35,7 @@
             height: 100svh;
         }
 
-        input{
+        input {
             margin-left: 25%;
             width: 150px;
         }
@@ -42,70 +44,57 @@
 
 <body>
     <h1>Cenas</h1>
-    <div>
-        <table>
-            <tr>
-                <td id="1" onclick="colorC(1);"></td>
-                <td id="2" onclick="colorC(2);"></td>
-                <td id="3" onclick="colorC(3);"></td>
-                <td id="4" onclick="colorC(4);"></td>
-                <td id="5" onclick="colorC(5);"></td>
-                <td id="6" onclick="colorC(6);"></td>
-            </tr>
-            <tr>
-                <td id="7" onclick="colorC(7);"></td>
-                <td id="8" onclick="colorC(8);"></td>
-                <td id="9" onclick="colorC(9);"></td>
-                <td id="10" onclick="colorC(10);"></td>
-                <td id="11" onclick="colorC(11);"></td>
-                <td id="12" onclick="colorC(12);"></td>
-            </tr>
-            <tr>
-                <td id="13" onclick="colorC(13);"></td>
-                <td id="14" onclick="colorC(14);"></td>
-                <td id="15" onclick="colorC(15);"></td>
-                <td id="16" onclick="colorC(16);"></td>
-                <td id="17" onclick="colorC(17);"></td>
-                <td id="18" onclick="colorC(18);"></td>
-            </tr>
-            <tr>
-                <td id="19" onclick="colorC(19);"></td>
-                <td id="20" onclick="colorC(20);"></td>
-                <td id="21" onclick="colorC(21);"></td>
-                <td id="22" onclick="colorC(22);"></td>
-                <td id="23" onclick="colorC(23);"></td>
-                <td id="24" onclick="colorC(24);"></td>
-            </tr>
-            <tr>
-                <td id="25" onclick="colorC(25);"></td>
-                <td id="26" onclick="colorC(26);"></td>
-                <td id="27" onclick="colorC(27);"></td>
-                <td id="28" onclick="colorC(28);"></td>
-                <td id="29" onclick="colorC(29);"></td>
-                <td id="30" onclick="colorC(30);"></td>
-            </tr>
-            <tr>
-                <td id="31" onclick="colorC(31);"></td>
-                <td id="32" onclick="colorC(32);"></td>
-                <td id="33" onclick="colorC(33);"></td>
-                <td id="34" onclick="colorC(34);"></td>
-                <td id="35" onclick="colorC(35);"></td>
-                <td id="36" onclick="colorC(36);"></td>
-            </tr>
-        </table>
+    <div id="tableContainer"></div>
 
-    </div>
+    <script>
+        function generateTable(rows, columns) {
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = ''; // Clear existing table if any
+
+            const table = document.createElement('table');
+            let idCounter = 1;
+
+            for (let i = 0; i < rows; i++) {
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < columns; j++) {
+                    const cell = document.createElement('td');
+                    cell.id = idCounter;
+                    cell.onclick = () => colorC(idCounter);
+                    row.appendChild(cell);
+                    idCounter++;
+                }
+
+                table.appendChild(row);
+            }
+
+            tableContainer.appendChild(table);
+        }
+
+
+
+        // Example usage:
+        generateTable(9, 9); 
+        
+
+        function colorC(id) {
+
+            document.getElementById(id).style.backgroundColor = document.getElementById("color").value;
+        }
+        // You can call generateTable with different arguments to create tables of varying sizes.
+        // generateTable(4, 8); // Generates a 4x8 table
+    </script>
 
     <div class="colorPicker">
         <input type="color" name="" id="color">
     </div>
 
-    <script>
+    <!-- <script>
         function colorC(id) {
             document.getElementById(id).style.backgroundColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
             document.getElementById(id).style.backgroundColor = document.getElementById("color").value;
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
