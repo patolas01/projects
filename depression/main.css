@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+@font-face {
+    font-family: 'Paulovelle';
+    src: url('../Paulovelle.otf');
+}
 
 html {
-    font-family: "Merriweather Sans", sans-serif;
+    /*font-family: "Merriweather Sans", sans-serif;*/
+    font-family: 'Paulovelle';
 
 }
 
