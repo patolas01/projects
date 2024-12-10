@@ -24,15 +24,12 @@
             overflow: hidden;
             height: 100svh;
             width: 100svw;
-            /* Prevent scrollbars */
         }
 
         .container {
             margin: 0 auto;
             width: 90%;
-            /* Use percentage for responsiveness */
             height: 90%;
-            /* Adjust to avoid overflow */
             display: flex;
             flex-direction: column;
         }
@@ -44,29 +41,25 @@
             padding: 1.8rem;
             background-color: #333333;
             color: #ffffff;
-            /*border: 1px solid #444444;*/
             border-radius: 5px;
             font-family: 'Paulovelle';
             resize: none;
             width: 100%;
-            /* Ensure it adapts to parent */
-            height: calc(100% - 4.4rem);
-            /* Subtract height of controls */
+            height: calc(100% - 6.4rem);
             box-sizing: border-box;
             line-height: 2.8rem;
-            /* Include padding and borders in width/height */
         }
 
         .controls {
             margin-top: 0.8rem;
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
         }
 
         .controls button {
             transition-duration: 300ms;
-            width: 100%;
-            /* Prevent overflowing */
+            flex-grow: 1;
             height: 3.4rem;
             background-color: #3b3b3b;
             color: #ffffff;
@@ -75,11 +68,8 @@
             border-radius: 2rem;
             outline: none;
             -webkit-tap-highlight-color: transparent;
-            /* Disables the blue highlight */
             user-select: none;
-            /* Prevents text selection */
             appearance: none;
-            /* Normalizes button appearance */
         }
 
         .controls button:hover {
@@ -89,28 +79,21 @@
         .controls button:focus,
         .controls button:active {
             background-color: #3b3b3b;
-            /* Keeps the background consistent */
-            box-shadow: none;
-            /* Removes any shadow effects */
         }
 
-        /* width */
         ::-webkit-scrollbar {
             width: 10px;
         }
 
-        /* Track */
         ::-webkit-scrollbar-track {
             background: transparent;
         }
 
-        /* Handle */
         ::-webkit-scrollbar-thumb {
             background: #888;
             border-radius: 3px;
         }
 
-        /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
@@ -122,28 +105,71 @@
         <textarea id="textArea" class="text-editable" placeholder="Exemplo de texto..." disabled></textarea>
         <div class="controls">
             <button id="toggleButton">Editar</button>
+            <button id="exportButton">Exportar</button>
         </div>
     </div>
 
     <script>
         const textArea = document.getElementById("textArea");
         const toggleButton = document.getElementById("toggleButton");
+        const exportButton = document.getElementById("exportButton");
 
         // Toggle Editable State
         toggleButton.addEventListener("click", () => {
             if (!textArea.disabled) {
-                // Switch to Show Mode
                 textArea.disabled = true;
-                /*textArea.style.pointerEvents = "none";*/ // Disable editing
                 toggleButton.textContent = "Editar";
                 toggleButton.style.backgroundColor = "#3b3b3b";
             } else {
-                // Switch to Edit Mode
                 textArea.disabled = false;
-                /*textArea.style.pointerEvents = "auto";*/ // Enable editing
                 toggleButton.textContent = "Guardar";
                 toggleButton.style.backgroundColor = "#787878";
             }
+        });
+
+        // Export Text Functionality
+        exportButton.addEventListener("click", () => {
+            const popup = document.createElement("div");
+            popup.style.position = "fixed";
+            popup.style.top = "50%";
+            popup.style.left = "50%";
+            popup.style.transform = "translate(-50%, -50%)";
+            popup.style.padding = "2rem";
+            popup.style.backgroundColor = "#444";
+            popup.style.color = "#fff";
+            popup.style.borderRadius = "1rem";
+            popup.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+
+            popup.innerHTML = `
+                <h3>Exportar Texto</h3>
+                <label>Nome do ficheiro: <input type="text" id="fileName" placeholder="documento" style="width: 100%;"></label>
+                <br><br>
+                <button id="confirmExport">Exportar</button>
+                <button id="cancelExport">Cancelar</button>
+            `;
+
+            document.body.appendChild(popup);
+
+            const confirmExport = document.getElementById("confirmExport");
+            const cancelExport = document.getElementById("cancelExport");
+            const fileNameInput = document.getElementById("fileName");
+
+            confirmExport.addEventListener("click", () => {
+                const fileName = fileNameInput.value || "documento";
+                const textBlob = new Blob([textArea.value], { type: "text/plain" });
+                const textURL = URL.createObjectURL(textBlob);
+
+                const link = document.createElement("a");
+                link.href = textURL;
+                link.download = `${fileName}.txt`;
+                link.click();
+
+                document.body.removeChild(popup);
+            });
+
+            cancelExport.addEventListener("click", () => {
+                document.body.removeChild(popup);
+            });
         });
     </script>
 </body>
