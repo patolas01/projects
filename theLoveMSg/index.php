@@ -5,12 +5,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
 
+        @font-face {
+            font-family: 'Paulovelle';
+            /*a name to be used later*/
+            src: url('Paulovelle.otf');
+            /*URL to font*/
+        }
+        
         body {
             transition-duration: 1012ms;
             //background: linear-gradient(to right, #ff00cc, #333399);
             background: linear-gradient(to right, #333852, #311a40);
             //background-image: url('https://youtu.be/BFhp7Y0iLSA');
-            font-family: 'Alkatra', cursive;
+            /*font-family: 'Alkatra', cursive;*/
+            font-family: 'Paulovelle';
             color: white;
             margin: 0;
             height: 100svh;
