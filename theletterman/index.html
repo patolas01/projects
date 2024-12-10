@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editable Text Example</title>
+    <title>Editable Text with Export</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Paulovelle';
@@ -17,13 +18,13 @@
             justify-content: center;
             background-color: #222222;
             color: #ffffff;
-            font-family: 'Paulovelle';
-            font-size: 120% !important;
+            font-family: 'Roboto', sans-serif;
+            font-size: 120%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
             height: 100svh;
             width: 100svw;
+            overflow: hidden;
         }
 
         .container {
@@ -45,7 +46,7 @@
             font-family: 'Paulovelle';
             resize: none;
             width: 100%;
-            height: calc(100% - 6.4rem);
+            height: calc(100% - 4.4rem);
             box-sizing: border-box;
             line-height: 2.8rem;
         }
@@ -53,13 +54,12 @@
         .controls {
             margin-top: 0.8rem;
             display: flex;
-            justify-content: space-between;
             gap: 1rem;
         }
 
         .controls button {
-            transition-duration: 300ms;
-            flex-grow: 1;
+            transition: all 0.3s ease;
+            flex: 1;
             height: 3.4rem;
             background-color: #3b3b3b;
             color: #ffffff;
@@ -70,32 +70,88 @@
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             appearance: none;
+            font-family: 'Roboto', sans-serif;
         }
 
         .controls button:hover {
             background-color: #555555;
+            transform: scale(1.05);
         }
 
-        .controls button:focus,
-        .controls button:active {
-            background-color: #3b3b3b;
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: #333333;
+            padding: 2rem;
+            border-radius: 1rem;
+            -webkit-box-shadow: 0px 0px 5px 200px rgba(0, 0, 0, 0.82);
+            -moz-box-shadow: 0px 0px 5px 200px rgba(0, 0, 0, 0.82);
+            box-shadow: 0px 0px 5px 200px rgba(0, 0, 0, 0.82);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 80svw;
+            opacity: 0;
+            transition: all 0.3s ease;
         }
 
-        ::-webkit-scrollbar {
-            width: 10px;
+        .popup.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
         }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
+        .popup input,
+        .popup button {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            padding: 0.4rem;
+            border-radius: 0;
+            border: none;
+            width: 100%;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 3px;
+        .popup input[type="text"]{
+            width: calc(100% - 0.8rem);
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .popup input[type="color"] {
+            padding: 0;
+            height: 2rem;
+            cursor: pointer;
+            appearance: none;
+            background: none;
+            border: 1px solid #777777;
+        }
+
+        .popup button {
+            padding: 1rem;
+            border-radius: 2rem;
+            background: #555555;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .popup button:hover {
+            background: #777777;
+            transform: scale(1.05);
+        }
+
+        .preview {
+            border: 1px solid #555555;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: #ffffff;
+            color: #000000;
+            min-height: 100px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            font-family: 'Paulovelle';
         }
     </style>
 </head>
@@ -109,67 +165,93 @@
         </div>
     </div>
 
+    <div class="popup" id="exportPopup">
+        <label>
+            Nome da Nota:
+            <input type="text" id="noteName" placeholder="letterman-20241210-1914.png">
+        </label>
+        <label>
+            Cor de Fundo:
+            <input type="color" id="bgColor" value="#ffffff">
+        </label>
+        <label>
+            Cor da Fonte:
+            <input type="color" id="fontColor" value="#000000">
+        </label>
+        <div class="preview" id="preview"></div>
+        <button id="downloadButton">Transferir</button>
+        <button id="closePopup">Cancelar</button>
+    </div>
+
     <script>
         const textArea = document.getElementById("textArea");
         const toggleButton = document.getElementById("toggleButton");
         const exportButton = document.getElementById("exportButton");
+        const exportPopup = document.getElementById("exportPopup");
+        const closePopup = document.getElementById("closePopup");
+        const downloadButton = document.getElementById("downloadButton");
+        const noteName = document.getElementById("noteName");
+        const bgColor = document.getElementById("bgColor");
+        const fontColor = document.getElementById("fontColor");
+        const preview = document.getElementById("preview");
 
         // Toggle Editable State
         toggleButton.addEventListener("click", () => {
-            if (!textArea.disabled) {
-                textArea.disabled = true;
-                toggleButton.textContent = "Editar";
-                toggleButton.style.backgroundColor = "#3b3b3b";
-            } else {
-                textArea.disabled = false;
-                toggleButton.textContent = "Guardar";
-                toggleButton.style.backgroundColor = "#787878";
-            }
+            textArea.disabled = !textArea.disabled;
+            toggleButton.textContent = textArea.disabled ? "Editar" : "Guardar";
+            toggleButton.style.backgroundColor = textArea.disabled ? "#3b3b3b" : "#787878";
         });
 
-        // Export Text Functionality
+        // Open Export Popup
         exportButton.addEventListener("click", () => {
-            const popup = document.createElement("div");
-            popup.style.position = "fixed";
-            popup.style.top = "50%";
-            popup.style.left = "50%";
-            popup.style.transform = "translate(-50%, -50%)";
-            popup.style.padding = "2rem";
-            popup.style.backgroundColor = "#444";
-            popup.style.color = "#fff";
-            popup.style.borderRadius = "1rem";
-            popup.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+            noteName.value = `letterman-${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}.png`;
+            updatePreview();
+            exportPopup.classList.add("active");
+        });
 
-            popup.innerHTML = `
-                <h3>Exportar Texto</h3>
-                <label>Nome do ficheiro: <input type="text" id="fileName" placeholder="documento" style="width: 100%;"></label>
-                <br><br>
-                <button id="confirmExport">Exportar</button>
-                <button id="cancelExport">Cancelar</button>
-            `;
+        // Close Export Popup
+        closePopup.addEventListener("click", () => {
+            exportPopup.classList.remove("active");
+        });
 
-            document.body.appendChild(popup);
+        // Update Preview
+        const updatePreview = () => {
+            preview.style.backgroundColor = bgColor.value;
+            preview.style.color = fontColor.value;
+            preview.textContent = textArea.value;
+        };
 
-            const confirmExport = document.getElementById("confirmExport");
-            const cancelExport = document.getElementById("cancelExport");
-            const fileNameInput = document.getElementById("fileName");
+        bgColor.addEventListener("input", updatePreview);
+        fontColor.addEventListener("input", updatePreview);
 
-            confirmExport.addEventListener("click", () => {
-                const fileName = fileNameInput.value || "documento";
-                const textBlob = new Blob([textArea.value], { type: "text/plain" });
-                const textURL = URL.createObjectURL(textBlob);
+        // Download Image
+        downloadButton.addEventListener("click", () => {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
 
-                const link = document.createElement("a");
-                link.href = textURL;
-                link.download = `${fileName}.txt`;
-                link.click();
+            const lines = textArea.value.split("\n");
+            const lineHeight = 36;
 
-                document.body.removeChild(popup);
+            // Dynamically adjust canvas height based on content
+            canvas.width = 800;
+            canvas.height = lines.length * lineHeight + 40;
+
+            ctx.fillStyle = bgColor.value;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = fontColor.value;
+            ctx.font = "16pt Paulovelle";
+            ctx.textBaseline = "top";
+
+            lines.forEach((line, index) => {
+                ctx.fillText(line, 20, 20 + index * lineHeight);
             });
 
-            cancelExport.addEventListener("click", () => {
-                document.body.removeChild(popup);
-            });
+            // Create download link
+            const link = document.createElement("a");
+            link.download = noteName.value;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
         });
     </script>
 </body>
