@@ -113,7 +113,7 @@
             width: 100%;
         }
 
-        .popup input[type="text"]{
+        .popup input[type="text"] {
             width: calc(100% - 0.8rem);
         }
 
@@ -224,27 +224,50 @@
         bgColor.addEventListener("input", updatePreview);
         fontColor.addEventListener("input", updatePreview);
 
-        // Download Image
+        //Download image
         downloadButton.addEventListener("click", () => {
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
 
+            // Set the desired font and line height
             const lines = textArea.value.split("\n");
-            const lineHeight = 36;
+            const baseFontSize = 16; // Base font size in points (this will be scaled)
+            const lineHeight = 36; // Line height in pixels
+            const padding = 20; // Padding around the text
 
-            // Dynamically adjust canvas height based on content
-            canvas.width = 800;
-            canvas.height = lines.length * lineHeight + 40;
+            // Set the target resolution (can be modified to 1920x1080, 3840x2160, 7680x4320, etc.)
+            const targetResolution = { width: 7680, height: 4320 }; // Example: 4K resolution (can be set to 8K, HD, etc.)
 
+            // Calculate text width and height (without scaling)
+            const textWidth = Math.max(...lines.map(line => ctx.measureText(line).width)) + 2 * padding; // Width of the longest line + padding
+            const textHeight = lines.length * lineHeight + 2 * padding; // Height based on number of lines + padding
+
+            // Ensure the canvas size matches the target resolution
+            const canvasWidth = Math.max(targetResolution.width, textWidth); // Minimum width based on resolution
+            const canvasHeight = Math.max(targetResolution.height, textHeight); // Minimum height based on resolution
+
+            // Set the canvas size to target resolution (e.g., Full HD, 4K, 8K)
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
+
+            // Calculate scale factor to fit text inside the target resolution
+            const scaleFactor = Math.min(canvas.width / textWidth, canvas.height / textHeight);
+
+            // Apply scaling for high-quality export based on target resolution
+            ctx.setTransform(scaleFactor, 0, 0, scaleFactor, padding, padding);
+
+            // Fill the background
             ctx.fillStyle = bgColor.value;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Set the font and color, scaling up for the target resolution
             ctx.fillStyle = fontColor.value;
-            ctx.font = "16pt Paulovelle";
+            ctx.font = `${baseFontSize}px Paulovelle`; // Use px for better scaling in HTML5 canvas
             ctx.textBaseline = "top";
 
+            // Draw the text on the canvas
             lines.forEach((line, index) => {
-                ctx.fillText(line, 20, 20 + index * lineHeight);
+                ctx.fillText(line, padding, padding + index * lineHeight);
             });
 
             // Create download link
