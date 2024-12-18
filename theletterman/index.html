@@ -16,7 +16,7 @@
         }
 
         body {
-            display: flex;
+            /*display: flex;*/
             align-items: center;
             justify-content: center;
             background-color: #222222;
@@ -27,13 +27,13 @@
             padding: 0;
             height: 100svh;
             width: 100svw;
-            overflow: hidden;
+            /*overflow: hidden;*/
         }
 
         .container {
             margin: 0 auto;
             width: 95svw;
-            height: 95svh;
+            height: 98svh;
             display: flex;
             flex-direction: column;
         }
@@ -42,14 +42,15 @@
             font-size: 12pt;
             white-space: pre-wrap;
             overflow-y: auto;
-            padding: 1.8rem;
+            margin-top: 0.6rem;
+            padding: 1.5rem;
             background-color: #333333;
             color: #ffffff;
             border-radius: 5px;
             font-family: 'Paulovelle';
             resize: none;
             width: 100%;
-            height: calc(100% - 4.4rem);
+            height: calc(98svh - 4.4rem);
             box-sizing: border-box;
             line-height: 2rem;
         }
@@ -90,7 +91,7 @@
             background-color: #363636;
         }
 
-        #closePopup{
+        #closePopup {
             background-color: #834945;
         }
 
@@ -186,6 +187,21 @@
 
 
 
+        footer {
+            font-size: 10pt;
+            text-align: center;
+            color: #808080;
+            width: 100svw;
+            margin-top: 1rem;
+            padding: 1rem;
+            padding-left: 0;
+            padding-right: 0;
+            height: 1rem;
+        }
+
+
+
+
 
 
         .material-symbols-outlined {
@@ -207,6 +223,7 @@
                     download
                 </span></button>
         </div>
+
     </div>
 
     <div class="popup" id="exportPopup">
@@ -226,6 +243,11 @@
         <button id="downloadButton">Transferir</button>
         <button id="closePopup">Cancelar</button>
     </div>
+
+    <footer>
+        developed by <a href="https://linktr.ee/patolas01" target="_blank" style="color: #c4c4c4;">patolas01</a>
+    </footer>
+
 
     <script>
         const textArea = document.getElementById("textArea");
@@ -368,6 +390,7 @@
             link.click();
         });
     </script>
+
 </body>
 
 </html>
