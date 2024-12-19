@@ -216,9 +216,9 @@
 
 <body>
     <div class="container">
-        <textarea id="textArea" class="text-editable" placeholder="Exemplo de texto..." disabled></textarea>
+        <textarea id="textArea" class="text-editable" placeholder="Write the truth here..." disabled></textarea>
         <div class="controls">
-            <button id="toggleButton">Editar</button>
+            <button id="toggleButton">Edit</button>
             <button id="exportButton"><span class="material-symbols-outlined">
                     download
                 </span></button>
@@ -228,20 +228,20 @@
 
     <div class="popup" id="exportPopup">
         <label>
-            Nome da Nota:
+            Letter name:
             <input type="text" id="noteName" placeholder="letterman.png">
         </label>
         <label>
-            Cor de Fundo:
+            background color:
             <input type="color" id="bgColor" value="#224791">
         </label>
         <label>
-            Cor da Fonte:
+            Font color:
             <input type="color" id="fontColor" value="#ffffff">
         </label>
         <div class="preview" id="preview"></div>
-        <button id="downloadButton">Transferir</button>
-        <button id="closePopup">Cancelar</button>
+        <button id="downloadButton">Download</button>
+        <button id="closePopup">Cancel</button>
     </div>
 
     <footer>
@@ -264,13 +264,13 @@
         // Toggle Editable State
         toggleButton.addEventListener("click", () => {
             textArea.disabled = !textArea.disabled;
-            toggleButton.textContent = textArea.disabled ? "Editar" : "Guardar";
+            toggleButton.textContent = textArea.disabled ? "Edit" : "Save";
             toggleButton.style.backgroundColor = textArea.disabled ? "#3b3b3b" : "#787878";
         });
 
         // Open Export Popup
         exportButton.addEventListener("click", () => {
-            noteName.value = `letterman-${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}.png`;
+            noteName.value = `theLetterMan-${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}.png`;
             updatePreview();
             exportPopup.classList.add("active");
         });
