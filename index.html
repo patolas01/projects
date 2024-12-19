@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e1e1e;
+            --secondary-color: #2a2a2a;
+            --text-color: #f5f5f5;
+            --card-bg-gradient: linear-gradient(135deg, #393d46, #1c2388);
+            /*--card-border-light: #f5f5f5;*/
+        }
+
+        body.dark-mode {
+            --primary-color: #1e1e1e;
+            --secondary-color: #2a2a2a;
+            --text-color: #f5f5f5;
+        }
+
+        body.light-mode {
+            --primary-color: #f5f5f5;
+            --secondary-color: #ffffff;
+            --text-color: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px 6rem 20px 6rem;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        .description {
+            font-size: 1.2em;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .card {
+            background: var(--card-bg-gradient);
+            /*border: 2px solid var(--card-border-light);*/
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        @media (max-width: 1200px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .container {
+                padding: 20px 2rem;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .description {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 1rem;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .description {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <div class="theme-toggle" hidden>
+        <label class="switch">
+            <input type="checkbox" id="theme-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Projects</h1>
+            <p class="description">A collection of my developed projects</p>
+        </header>
+
+
+
+        <!-- <div class="cards">
+            <a href="https://patolas01.github.io/Web-Library/PARTIALS/navbar-1/" class="card">
+                <h2>Navbar</h2>
+                <p>A collection of responsive navbars</p>
+            </a>
+            <a href="https://patolas01.github.io/Web-Library/PARTIALS/overlays/football-score/" class="card">
+                <h2>Score Board Overlay</h2>
+                <p>A modern football score board inspired by the UEFA Euro overlay</p>
+            </a>
+            <a href="https://patolas01.github.io/Web-Library/PARTIALS/slider-carousel/" class="card">
+                <h2>Slider</h2>
+                <p>Smooth and responsive sliders</p>
+            </a>
+        </div>
+    </div> -->
+
+
+
+        <div class="cards" id="projects-container">
+            <!-- JavaScript will insert project cards here -->
+        </div>
+
+        <script>
+            // Function to fetch the projects.json file and generate the project cards
+            async function loadProjects() {
+                try {
+                    const response = await fetch('projects.json');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    const projects = await response.json();
+
+                    const container = document.getElementById('projects-container');
+                    projects.forEach(project => {
+                        const card = document.createElement('a');
+                        card.href = project.path;
+                        card.className = 'card';
+                        card.innerHTML = `
+                <h2>${project.name}</h2>
+                <p>A description for ${project.name}</p>
+              `;
+                        container.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error('Error loading projects:', error);
+                }
+            }
+
+            // Call the function to load projects when the page loads
+            document.addEventListener('DOMContentLoaded', loadProjects);
+        </script>
+
+
+
+
+
+        <script>
+            document.getElementById('theme-switch').addEventListener('change', function (event) {
+                if (event.target.checked) {
+                    document.body.classList.remove('dark-mode');
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                    document.body.classList.add('dark-mode');
+                }
+            });
+        </script>
+</body>
+
+</html>
