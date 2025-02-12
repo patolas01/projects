@@ -1,0 +1,64 @@
+body {
+    background-color: #883784;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    width: 40svw;
+    height: 40svw;
+    /*border: red 1px solid;*/
+}
+
+#div1,
+#div2,
+#div3,
+#div4 {
+    /*border: yellow 1px solid;*/
+    width: 40svw;
+    height: 40svw;
+    position: absolute;
+    /* transition-duration: 850ms;
+    transition-delay: 850ms;
+    transition-timing-function: ease-in-out; */
+}
+
+#div1 {
+    z-index: 5;
+    background-image: url(img/top.png);
+    background-size: cover;
+}
+
+#div2 {
+    z-index: 4;
+    background-image: url(img/bottom.png);
+    background-size: cover;
+}
+
+#div3 {
+    z-index: 3;
+    background-image: url(img/led.png);
+    background-size: cover;
+    background-position: -12px -8px;
+    -webkit-transform: scale(0);
+}
+
+#div4 {
+    z-index: 2;
+    background-image: url(img/led-fill.png);
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    opacity: 0;
+}
+
+#div5 {
+    z-index: 1;
+    background-image: url(img/bottom-b.png);
+    background-size: cover;
+}
