@@ -59,12 +59,12 @@ function changeDivStyles() {
     var div4 = document.getElementById('div4');
 
     if (div3) {
-        div3.style.transition = 'transform 240ms';
+        div3.style.transition = 'transform 640ms';
         div3.style.webkitTransform = 'scale(1.0)';
     }
 
     if (div4) {
-        div4.style.transition = 'opacity 240ms';
+        div4.style.transition = 'opacity 640ms';
         div4.style.opacity = '1';
     }
 
