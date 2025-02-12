@@ -1,21 +1,3 @@
-function applyParallaxEffect(event) {
-    var acceleration = event.accelerationIncludingGravity;
-    var mainDiv = document.getElementsByClassName('main');
-
-    if (mainDiv) {
-        var x = acceleration.x / 10; // Adjust the divisor to control the effect intensity
-        var y = acceleration.y / 10;
-
-        mainDiv.style.transform = `translate(${x}px, ${y}px)`;
-    }
-}
-
-if (window.DeviceMotionEvent) {
-    window.addEventListener('devicemotion', applyParallaxEffect, false);
-} else {
-    console.log("DeviceMotionEvent is not supported");
-}
-
 // Function to detect shake event
 (function () {
     var shakeThreshold = 15;

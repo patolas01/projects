@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'Paulovelle';
+    src: url('Paulovelle.otf');
+}
+
 body {
     background-color: #883784;
-    font-family: Arial, sans-serif;
+    font-family: 'Paulovelle';
+    color: white;
+    font-size: larger;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,14 +39,14 @@ body {
     z-index: 5;
     background-image: url(img/top.png);
     background-size: 100% 100%;
-    
+
 }
 
 #div2 {
     z-index: 4;
     background-image: url(img/bottom.png);
     background-size: 100% 100%;
-    
+
 }
 
 #div3 {
@@ -62,5 +69,47 @@ body {
 #div5 {
     z-index: 1;
     background-image: url(img/bottom-b.png);
-    bbackground-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.text-container {
+    pointer-events: none;
+    transition-duration: 1s;
+    position: absolute;
+    top: 72%;
+    left: 11%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80svw;
+    animation: text 1s infinite;
+}
+
+@keyframes text {
+    0% {
+        transform: scale(1);
+    }
+
+    12% {
+        transform: scale(1.03);
+    }
+
+    24% {
+        transform: scale(1.01);
+    }
+
+    36% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.top-text {
+    position: absolute;
+    top: 10svh;
+    font-size: 2em;
+    color: #f7f7f7;
+    text-shadow: 0 0 20px #7e7e7e;
 }
