@@ -83,7 +83,7 @@ function changeDivStyles() {
         }
 
         body.style.transitionDuration = '12000ms';
-        body.style.backgroundColor = '#883784';
+        body.style.backgroundColor = '#6b3b69';
 
     }, 1000); // Adjust the delay as needed
 }
