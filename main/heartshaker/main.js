@@ -68,11 +68,8 @@ function changeDivStyles() {
         div4.style.transition = 'opacity 640ms';
         div4.style.opacity = '1';
     }
-
-    if (body) {
-        body.style.transition = 'background-color 640ms';
-        body.style.backgroundColor = '#202020';
-    }
+    body.style.transition = 'background-color 640ms';
+    body.style.backgroundColor = '#202020';
 
     setTimeout(function () {
         if (div3) {
@@ -84,9 +81,9 @@ function changeDivStyles() {
             div4.style.transition = 'opacity 12000ms';
             div4.style.opacity = '0';
         }
-        if (body) {
-            body.style.transition = 'background-color 640ms';
-            body.style.backgroundColor = '#883784';
-        }
+
+        body.style.transition = 'background-color 640ms';
+        body.style.backgroundColor = '#883784';
+
     }, 1000); // Adjust the delay as needed
 }
