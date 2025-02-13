@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeSand</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="top-text">Gira o telemóvel</div>
+    <canvas id="hourglassCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById("hourglassCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const gravity = { x: 0, y: 1 };
+
+        // Load images
+        const hourglass = new Image();
+        hourglass.src = "img/glass.png"; // Hourglass frame
+        const rose = new Image();
+        rose.src = "img/rose.png"; // Rose inside
+
+        function createSandParticle() {
+            return {
+                x: canvas.width / 2 + (Math.random() * 50 - 25),
+                y: canvas.height / 4 + Math.random() * 10,
+                vx: (Math.random() - 0.5) * 2,
+                vy: Math.random() * 2,
+                size: 2 + Math.random() * 2,
+                color: "#D4A373"
+            };
+        }
+
+        for (let i = 0; i < 300; i++) {
+            particles.push(createSandParticle());
+        }
+
+        function updateParticles() {
+            particles.forEach(p => {
+                p.vx += gravity.x * 0.05;
+                p.vy += gravity.y * 0.05;
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.y > canvas.height / 2) {
+                    p.vy *= -0.5;
+                    p.y = canvas.height / 2;
+                }
+                if (p.x < canvas.width / 2 - 50 || p.x > canvas.width / 2 + 50) {
+                    p.vx *= -0.5;
+                }
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.drawImage(hourglass, canvas.width / 2 - 75, canvas.height / 3.2, 150, 250);
+            ctx.drawImage(rose, canvas.width / 2 - 20, canvas.height / 2 - 40, 40, 80);
+
+            particles.forEach(p => {
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            updateParticles();
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener("devicemotion", event => {
+            gravity.x = event.accelerationIncludingGravity.x * 0.2;
+            gravity.y = event.accelerationIncludingGravity.y * 0.2;
+        });
+
+        hourglass.onload = () => draw();
+    </script>
+    <div class="text-container">
+        <p>O tempo pode trazer coisas muito...</p>
+        <p style="font-size: xx-large;">Bonitas</p>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>

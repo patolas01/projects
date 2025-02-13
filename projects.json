@@ -10,5 +10,9 @@
   {
     "name": "HeartStopper",
     "path": "main/heartshaker/index.html"
+  },
+  {
+    "name": "TimeSand",
+    "path": "main/timesand/index.html"
   }
 ]
