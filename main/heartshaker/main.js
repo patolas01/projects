@@ -68,7 +68,7 @@ function changeDivStyles() {
         div4.style.transition = 'opacity 640ms';
         div4.style.opacity = '1';
     }
-
+    body.style.transitionDuration = '640ms';
     body.style.backgroundColor = '#202020';
 
     setTimeout(function () {
@@ -82,6 +82,7 @@ function changeDivStyles() {
             div4.style.opacity = '0';
         }
 
+        body.style.transitionDuration = '12000ms';
         body.style.backgroundColor = '#883784';
 
     }, 1000); // Adjust the delay as needed
