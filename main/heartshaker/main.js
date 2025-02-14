@@ -1,10 +1,10 @@
-// Function to detect shake event
 (function () {
     var shakeThreshold = 15;
     var lastX = null;
     var lastY = null;
     var lastZ = null;
     var lastTime = 0;
+    var permissionRequested = false;
 
     function deviceMotionHandler(event) {
         var acceleration = event.accelerationIncludingGravity;
@@ -34,23 +34,32 @@
 
     function requestMotionPermission() {
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
-            DeviceMotionEvent.requestPermission()
-                .then(permissionState => {
-                    if (permissionState === 'granted') {
-                        window.addEventListener('devicemotion', deviceMotionHandler, false);
-                    } else {
-                        console.log("Permission denied for motion sensors.");
-                    }
-                })
-                .catch(console.error);
+            if (!permissionRequested) {
+                permissionRequested = true; // Prevent multiple requests
+                DeviceMotionEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('devicemotion', deviceMotionHandler, false);
+                        } else {
+                            console.log("Permission denied for motion sensors.");
+                        }
+                    })
+                    .catch(console.error);
+            }
         } else {
-            // Non-iOS devices or older versions
+            // No permission request needed (Android/older iOS)
             window.addEventListener('devicemotion', deviceMotionHandler, false);
         }
     }
 
-    // Call permission request on user interaction (iOS requires this)
-    document.addEventListener('click', requestMotionPermission, { once: true });
+    // iOS requires user interaction, Android starts automatically
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        document.addEventListener('click', requestMotionPermission, { once: true });
+        console.log("iOS detected: Click anywhere to enable motion.");
+    } else {
+        window.addEventListener('devicemotion', deviceMotionHandler, false);
+        console.log("Android detected: Motion enabled automatically.");
+    }
 
 })();
 
