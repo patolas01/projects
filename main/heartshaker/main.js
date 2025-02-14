@@ -32,26 +32,26 @@
         }
     }
 
-    // function changeDivStyles() {
-    //     var div3 = document.getElementById('div3');
-    //     var div4 = document.getElementById('div4');
-
-    //     if (div3) {
-    //         div3.style.transition = 'transform 850ms';
-    //         div3.style.transform = 'scale(1)';
-    //     }
-
-    //     if (div4) {
-    //         div4.style.transition = 'opacity 850ms';
-    //         div4.style.opacity = '1';
-    //     }
-    // }
-
-    if (window.DeviceMotionEvent) {
-        window.addEventListener('devicemotion', deviceMotionHandler, false);
-    } else {
-        console.log("DeviceMotionEvent is not supported");
+    function requestMotionPermission() {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            DeviceMotionEvent.requestPermission()
+                .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener('devicemotion', deviceMotionHandler, false);
+                    } else {
+                        console.log("Permission denied for motion sensors.");
+                    }
+                })
+                .catch(console.error);
+        } else {
+            // Non-iOS devices or older versions
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        }
     }
+
+    // Call permission request on user interaction (iOS requires this)
+    document.addEventListener('click', requestMotionPermission, { once: true });
+
 })();
 
 function changeDivStyles() {
