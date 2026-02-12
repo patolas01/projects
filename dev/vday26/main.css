@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Twinkle+Star&display=swap');
+
+html {
+    background-color: #2c2c2c;
+    font-family: "Twinkle Star", cursive;
+    font-weight: 600;
+    font-style: normal;
+    color: #ffffff;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    transition: background-color 0.8s ease-in-out;
+}
+
+.swiper {
+    width: 100vw;
+    height: 100vh;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-text {
+    animation: fadeInOpacity 1.2s ease-in-out;
+    transition: opacity 1s ease;
+    margin-top: 0;
+    font-size: 3rem;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* The Animation Class */
+.fade-up {
+    animation: fadeUp 2s infinite;
+    /* 2 seconds per word */
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.swiper-slide:nth-child(1) {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-music {
+    position: relative;
+    overflow: hidden;
+    /* This is the "kill-switch" for the blur bleed */
+}
+
+.player-container {
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff1fb;
+    width: 280px;
+    background: rgba(255, 235, 251, 0.116);
+    /* Very subtle glass effect */
+    padding: 1.5rem 2rem;
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    /* Blurs what's behind the card itself */
+    /*border: 0 solid rgba(255, 255, 255, 0.1);*/
+}
+
+#song-title {
+    margin-bottom: 0.2rem;
+}
+
+#artist-name {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: rgba(255, 244, 248, 0.7);
+    /* Dimmed white for artist name */
+}
+
+#play-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The Play/Pause Button Circle */
+.play-icon-btn {
+    background-color: #ffe0f5;
+    /* Spotify Green */
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin: 20px auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.play-icon-btn:active {
+    transform: scale(0.9);
+}
+
+.play-icon-btn svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.hidden-icon {
+    display: none;
+}
+
+/* The Container for the Slider Track */
+.spotify-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    /* Sleek thin line */
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle dark track */
+    outline: none;
+    cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+/* The "Thumb" (The little dot) */
+.spotify-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    /* Pure white thumb */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border: none;
+}
+
+/* FireFox Support */
+.spotify-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+}
+
+.album-art {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the cover fills the square without stretching */
+}
+
+.timeline-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.time-stamp {
+    font-size: 0.75rem;
+    color: rgba(255, 225, 251, 0.5);
+    /* Dimmed white */
+    font-weight: 400;
+}
+
+/* Ensure hidden really means hidden */
+.hidden-icon {
+    display: none !important;
+}
+
+.bg-blur-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+
+    /* Stronger blur and scale to prevent white edges */
+    filter: blur(40px) brightness(0.4);
+    /* Adjust brightness and saturation for a more vibrant background */
+    transform: scale(1.3);
+
+    will-change: transform, filter;
+    transition: background-image 0.8s ease-in-out;
+}
+
+#dynamic-bg {
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(0.5);
+    /* Adjust brightness to make text readable */
+    /* Scale it up so the 'clean' edges are hidden outside the clip-path */
+    transform: scale(1.2);
+
+    /* Ensure the browser treats this as a separate layer */
+    will-change: transform, filter;
+}
+
+
+
+
+/*Swipe guide*/
+.swipe-hint {
+    position: fixed;
+    bottom: 40px;
+    /* Slightly higher to catch the eye */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth transition */
+    opacity: 0.8;
+}
+
+/* BIG State for Slide 1 */
+.swipe-hint.large {
+    bottom: 15%;
+    /* Moves it closer to the center of the screen */
+    transform: translateX(-50%) scale(1.5);
+    /* Makes everything 50% bigger */
+    opacity: 1;
+}
+
+.swipe-hint span {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: white;
+}
+
+.swipe-indicator {
+    width: 50px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.swipe-indicator .dot {
+    width: 20px;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    animation: swipeAnim 2s infinite ease-in-out;
+}
+
+@keyframes swipeAnim {
+    0% {
+        left: -30%;
+    }
+
+    50% {
+        left: 80%;
+    }
+
+    100% {
+        left: -30%;
+    }
+}

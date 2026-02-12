@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="../theLoveMsg/hrt.png" type="image/png">
+    <title>Happy Valentines L</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide-intro" data-bg="#2c2c2c">
+                <h1 class="welcome-text">Olá</h1>
+            </div>
+
+            <div class="swiper-slide slide-music" data-bg="#ffe0f5">
+                <div id="dynamic-bg" class="bg-blur-container"></div>
+                <div class="player-container">
+                    <div class="album-art">
+                        <img id="cover-img" src="" alt="Album Art">
+                    </div>
+
+                    <div class="song-info">
+                        <h2 id="song-title">Loading...</h2>
+                        <p id="artist-name">Artist</p>
+                    </div>
+
+                    <div class="timeline-wrapper">
+                        <span id="current-time" class="time-stamp">0:00</span>
+                        <input type="range" id="timeline" class="spotify-slider" value="0" step="0.1">
+                        <span id="duration-time" class="time-stamp">0:00</span>
+                    </div>
+
+                    <button id="playBtn" class="play-icon-btn">
+                        <svg id="play-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 6v12l10-6z" />
+                        </svg>
+                        <svg id="pause-svg" class="hidden-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide-rose" data-bg="#2c2c2c">
+                <h1 class="welcome-text">👀</h1>
+            </div>
+
+        </div>
+
+        <div class="swipe-hint large">
+            <span>desliza</span>
+            <div class="swipe-indicator">
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
