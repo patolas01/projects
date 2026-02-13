@@ -35,7 +35,7 @@ body {
     animation: fadeInOpacity 1.2s ease-in-out;
     transition: opacity 1s ease;
     margin-top: 0;
-    font-size: 3rem;
+    font-size: 10svw;
 }
 
 @keyframes fadeInOpacity {
@@ -88,10 +88,10 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #fff1fb;
-    width: 280px;
+    width: 70svw;
     background: rgba(255, 235, 251, 0.116);
     /* Very subtle glass effect */
-    padding: 1.5rem 2rem;
+    padding: 5svw 6svw;
     border-radius: 24px;
     backdrop-filter: blur(10px);
     /* Blurs what's behind the card itself */
@@ -99,13 +99,14 @@ body {
 }
 
 #song-title {
-    margin-bottom: 0.2rem;
+    font-size: 5.5svw;
+    margin-bottom: 1.2svw;
 }
 
 #artist-name {
     margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin-bottom: 2svh;
+    font-size: 3.8svw;
     color: rgba(255, 244, 248, 0.7);
     /* Dimmed white for artist name */
 }
@@ -121,14 +122,14 @@ body {
     background-color: #ffe0f5;
     /* Spotify Green */
     border: none;
-    width: 60px;
-    height: 60px;
+    width: 15svw;
+    height: 15svw;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
-    margin: 20px auto;
+    margin: 1svw auto;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -138,8 +139,8 @@ body {
 }
 
 .play-icon-btn svg {
-    width: 2rem;
-    height: 2rem;
+    width: 7svw;
+    height: 7svw;
 }
 
 .hidden-icon {
@@ -151,9 +152,9 @@ body {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 4px;
+    height: 0.5svh;
     /* Sleek thin line */
-    border-radius: 2px;
+    border-radius: 0.25svh;
     background: rgba(255, 255, 255, 0.1);
     /* Subtle dark track */
     outline: none;
@@ -165,8 +166,8 @@ body {
 .spotify-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 1svh;
+    height: 1svh;
     border-radius: 50%;
     background: #ffffff;
     /* Pure white thumb */
@@ -177,16 +178,16 @@ body {
 
 /* FireFox Support */
 .spotify-slider::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
+    width: 1svh;
+    height: 1svh;
     border-radius: 50%;
     background: #ffffff;
     border: none;
 }
 
 .album-art {
-    width: 280px;
-    height: 280px;
+    width: 70svw;
+    height: 70svw;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 12px;
@@ -203,13 +204,13 @@ body {
 .timeline-wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2svw;
     width: 100%;
-    margin: 10px 0;
+    margin: 2svh 0;
 }
 
 .time-stamp {
-    font-size: 0.75rem;
+    font-size: 3svw;
     color: rgba(255, 225, 251, 0.5);
     /* Dimmed white */
     font-weight: 400;
@@ -257,7 +258,7 @@ body {
 /*Swipe guide*/
 .swipe-hint {
     position: fixed;
-    bottom: 40px;
+    bottom: 4svh;
     /* Slightly higher to catch the eye */
     left: 50%;
     transform: translateX(-50%);
@@ -283,15 +284,15 @@ body {
 }
 
 .swipe-hint span {
-    font-size: 1rem;
+    font-size: 4svw;
     text-transform: uppercase;
     font-family: "Google Sans", sans-serif;
     color: white;
 }
 
 .swipe-indicator {
-    width: 50px;
-    height: 4px;
+    width: 15svw;
+    height: 0.4svh;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     position: relative;
@@ -335,7 +336,7 @@ body {
 
 .msg {
     font-family: 'Twinkle Star', cursive;
-    font-size: 4rem;
+    font-size: 15svw;
     color: #bb4475;
     margin: 0.5rem;
     text-align: center;
@@ -344,7 +345,7 @@ body {
 }
 
 h2.msg#first-msg {
-    font-size: 2.5rem;
+    font-size: 10svw;
     color: #ffb5c3;
 
 }
@@ -357,8 +358,8 @@ h2.msg#first-msg {
 
 .tulip-container {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 10svw;
+    height: 90svh;
     /* Adjust based on your SVG height */
     display: flex;
     justify-content: center;
@@ -367,8 +368,8 @@ h2.msg#first-msg {
 
 .tulip-part {
     position: absolute;
-    bottom: -20svh;
-    height: 70svh;
+    bottom: 5svh;
+    height: 80svh;
     /* Adjust to fit your design */
     width: auto;
     transform-origin: bottom center;
@@ -376,39 +377,38 @@ h2.msg#first-msg {
 
 /* Layering: Main part in back, side petals in front */
 .tulip-main {
-    left: 2rem;
+    left: -14svw;
     z-index: 1;
 }
 
 .petal-left,
 .petal-right {
-    bottom: 9.9svh;
-    height: 37svh;
+    bottom: 39svh;
+    height: 40svh;
     z-index: 3;
 }
 
 .petal-left {
-    left: 5px;
+    left: -19svw;
 }
 
 .petal-right {
-    right: -15px;
+    right: -22svw;
 }
 
 .tulip-message {
     position: absolute;
-    bottom: 18svh;
-    align-self: center;
-    left: 3.4rem;
+    bottom: 50svh;
+    left: -2svw;
     /* Position it where the 'center' petal is */
     z-index: 2;
     font-family: 'Twinkle Star', cursive;
-    font-size: 1.2rem;
+    font-size: 4svw;
     color: #ffffff;
     opacity: 0;
     transition: all 0.8s ease;
     text-align: center;
-    width: 60%;
+    width: 20svw;
 }
 
 .signature {
