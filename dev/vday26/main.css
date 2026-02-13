@@ -91,21 +91,22 @@ body {
     width: 70svw;
     background: rgba(255, 235, 251, 0.116);
     /* Very subtle glass effect */
-    padding: 5svw 6svw;
+    padding: 6svw 6svw;
     border-radius: 24px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(50px);
     /* Blurs what's behind the card itself */
     /*border: 0 solid rgba(255, 255, 255, 0.1);*/
 }
 
 #song-title {
-    font-size: 5.5svw;
+    font-size: 5.8svw;
     margin-bottom: 1.2svw;
+    margin-top: 1.4svh;
 }
 
 #artist-name {
     margin-top: 0;
-    margin-bottom: 2svh;
+    margin-bottom: 3svh;
     font-size: 3.8svw;
     color: rgba(255, 244, 248, 0.7);
     /* Dimmed white for artist name */
@@ -232,7 +233,7 @@ body {
     background-position: center;
 
     /* Stronger blur and scale to prevent white edges */
-    filter: blur(40px) brightness(0.4);
+    filter: blur(1200px) brightness(0.1);
     /* Adjust brightness and saturation for a more vibrant background */
     transform: scale(1.3);
 
@@ -243,7 +244,7 @@ body {
 #dynamic-bg {
     background-size: cover;
     background-position: center;
-    filter: blur(20px) brightness(0.5);
+    filter: blur(30px) brightness(0.4);
     /* Adjust brightness to make text readable */
     /* Scale it up so the 'clean' edges are hidden outside the clip-path */
     transform: scale(1.2);

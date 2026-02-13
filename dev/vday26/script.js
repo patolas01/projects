@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.activeIndex === 4 && played === false) { // Music Slide
                     played = true;
 
-                    song.currentTime = /*86*/112;
+                    song.currentTime = 86/*112*/;
                     song.volume = 0;
                     song.play().then(() => updateIcons()).catch(e => console.log("Waiting for user interaction..."));
 
