@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             index = (index + 1) % words.length;
             textElement.textContent = words[index];
         }
-        setInterval(updateText, 2000);
+        setInterval(updateText, 1500);
         textElement.classList.add("fade-up");
     }
 
@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    let played = false;
     // --- 4. Swiper Initialization ---
     const swiper = new Swiper('.swiper', {
         speed: 800,
@@ -53,19 +55,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 //swiper guide
                 const hint = document.querySelector('.swipe-hint');
 
+                const currentSlide = this.slides[this.activeIndex];
+
                 if (this.activeIndex === 0) {
                     hint.classList.add('large');
                 } else {
                     hint.classList.remove('large');
                 }
 
+                if (currentSlide.classList.contains('slide-tulip')) {
+                    // 1. Rotate the Left Petal out (-25 degrees)
+                    gsap.to(".petal-left", { rotation: -25, x: -10, delay: 0.8, duration: 2, ease: "power2.out" });
 
-                if (this.activeIndex === 1) { // Music Slide
-                    song.currentTime = 63;
+                    // 2. Rotate the Right Petal out (25 degrees)
+                    gsap.to(".petal-right", { rotation: 25, x: 10, delay: 0.8, duration: 2, ease: "power2.out" });
+
+                    // 3. Reveal the hidden text
+                    gsap.to(".tulip-message", {
+                        opacity: 1,
+                        y: -20,
+                        duration: 1,
+                        delay: 1
+                    });
+                } else {
+                    // Reset flower when swiping away
+                    gsap.to(".petal-left, .petal-right", { rotation: 0, x: 0, duration: 0.5 });
+                    gsap.to(".tulip-message", { opacity: 0, y: 0, duration: 0.5 });
+                }
+
+
+
+                if (this.activeIndex === 4) {
+                    hint.style.opacity = '0';
+                } else {
+                    hint.style.opacity = '1';
+                }
+
+                if (this.activeIndex === 4 && played === false) { // Music Slide
+                    played = true;
+
+                    song.currentTime = 86;
                     song.volume = 0;
                     song.play().then(() => updateIcons()).catch(e => console.log("Waiting for user interaction..."));
 
-                    gsap.to(song, { volume: 0.8, duration: 2, ease: "power1.inOut" });
+                    gsap.to(song, { volume: 0.8, duration: 3, ease: "power1.inOut" });
                 } else {
                     gsap.to(song, {
                         volume: 0,
